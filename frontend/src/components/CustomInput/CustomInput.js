@@ -29,6 +29,8 @@ export default function CustomInput(props) {
     white,
     inputRootCustomClasses,
     success,
+    value,
+    onChange,
   } = props;
   const classes = useStyles();
   const labelClasses = classNames({
@@ -67,8 +69,7 @@ export default function CustomInput(props) {
         <InputLabel
           className={classes.labelRoot + " " + labelClasses}
           htmlFor={id}
-          {...labelProps}
-        >
+          {...labelProps}>
           {labelText}
         </InputLabel>
       ) : null}
@@ -80,6 +81,8 @@ export default function CustomInput(props) {
           underline: underlineClasses,
         }}
         id={id}
+        value={value}
+        onChange={onChange}
         {...inputProps}
         inputProps={newInputProps}
       />
@@ -96,6 +99,8 @@ CustomInput.propTypes = {
   labelText: PropTypes.node,
   labelProps: PropTypes.object,
   id: PropTypes.string,
+  value: PropTypes.object,
+  onChange: PropTypes.object,
   inputProps: PropTypes.object,
   formControlProps: PropTypes.object,
   inputRootCustomClasses: PropTypes.string,
