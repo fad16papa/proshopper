@@ -122,6 +122,7 @@ const LoginPage = ({ location, history }) => {
                             <Email className={classes.inputIconsColor} />
                           </InputAdornment>
                         ),
+                        autoComplete: "off",
                       }}
                     />
                     <CustomInput
@@ -142,7 +143,7 @@ const LoginPage = ({ location, history }) => {
                     />
                   </CardBody>
                   <div className={classes.textCenter}>
-                    <Button simple color="primary" size="lg">
+                    <Button simple color="primary" size="lg" type="submit">
                       Get started
                     </Button>
                   </div>
