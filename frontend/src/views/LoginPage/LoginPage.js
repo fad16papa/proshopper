@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -7,6 +7,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Icon from "@material-ui/core/Icon";
+import LockIcon from "@material-ui/icons/Lock";
 // @material-ui/icons
 import Email from "@material-ui/icons/Email";
 import Favorite from "@material-ui/icons/Favorite";
@@ -26,6 +27,8 @@ import CustomInput from "../../components/CustomInput/CustomInput.js";
 import loginPageStyle from "../../assets/jss/material-kit-pro-react/views/loginPageStyle.js";
 
 import image from "../../assets/img/bg7.jpg";
+import { Fragment } from "react";
+import { login } from "../../actions/userAction";
 
 const useStyles = makeStyles(loginPageStyle);
 
@@ -40,51 +43,65 @@ const LoginPage = ({ location, history }) => {
 
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
-  const dispatch = React.useEffect(() => {
+  useEffect(() => {
+    if (userInfo) {
+      history.push(redirect);
+    }
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
-  });
+  }, [history, userInfo, redirect, window, document]);
   const classes = useStyles();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(login(email, password));
+  };
+
   return (
-    <div>
+    <Fragment>
       <div
         className={classes.pageHeader}
         style={{
           backgroundImage: "url(" + image + ")",
           backgroundSize: "cover",
           backgroundPosition: "top center",
-        }}>
+        }}
+      >
         <div className={classes.container}>
-          <GridContainer justify='center'>
+          <GridContainer justify="center">
             <GridItem xs={12} sm={12} md={4}>
               <Card>
-                <form className={classes.form}>
+                <form className={classes.form} onSubmit={submitHandler}>
                   <CardHeader
-                    color='primary'
+                    color="primary"
                     signup
-                    className={classes.cardHeader}>
+                    className={classes.cardHeader}
+                  >
                     <h4 className={classes.cardTitle}>Login</h4>
                     <div className={classes.socialLine}>
                       <Button
                         justIcon
-                        color='transparent'
+                        color="transparent"
                         className={classes.iconButtons}
-                        onClick={(e) => e.preventDefault()}>
-                        <i className='fab fa-twitter' />
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        <i className="fab fa-twitter" />
                       </Button>
                       <Button
                         justIcon
-                        color='transparent'
+                        color="transparent"
                         className={classes.iconButtons}
-                        onClick={(e) => e.preventDefault()}>
-                        <i className='fab fa-facebook' />
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        <i className="fab fa-facebook" />
                       </Button>
                       <Button
                         justIcon
-                        color='transparent'
+                        color="transparent"
                         className={classes.iconButtons}
-                        onClick={(e) => e.preventDefault()}>
-                        <i className='fab fa-google-plus-g' />
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        <i className="fab fa-google-plus-g" />
                       </Button>
                     </div>
                   </CardHeader>
@@ -93,22 +110,7 @@ const LoginPage = ({ location, history }) => {
                   </p>
                   <CardBody signup>
                     <CustomInput
-                      id='first'
-                      formControlProps={{
-                        fullWidth: true,
-                      }}
-                      inputProps={{
-                        placeholder: "First Name...",
-                        type: "text",
-                        startAdornment: (
-                          <InputAdornment position='start'>
-                            <Face className={classes.inputIconsColor} />
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
-                    <CustomInput
-                      id='email'
+                      id="email"
                       formControlProps={{
                         fullWidth: true,
                       }}
@@ -116,14 +118,14 @@ const LoginPage = ({ location, history }) => {
                         placeholder: "Email...",
                         type: "email",
                         startAdornment: (
-                          <InputAdornment position='start'>
+                          <InputAdornment position="start">
                             <Email className={classes.inputIconsColor} />
                           </InputAdornment>
                         ),
                       }}
                     />
                     <CustomInput
-                      id='pass'
+                      id="pass"
                       formControlProps={{
                         fullWidth: true,
                       }}
@@ -131,10 +133,8 @@ const LoginPage = ({ location, history }) => {
                         placeholder: "Password",
                         type: "password",
                         startAdornment: (
-                          <InputAdornment position='start'>
-                            <Icon className={classes.inputIconsColor}>
-                              lock_utline
-                            </Icon>
+                          <InputAdornment position="start">
+                            <LockIcon className={classes.inputIconsColor} />
                           </InputAdornment>
                         ),
                         autoComplete: "off",
@@ -142,7 +142,7 @@ const LoginPage = ({ location, history }) => {
                     />
                   </CardBody>
                   <div className={classes.textCenter}>
-                    <Button simple color='primary' size='lg'>
+                    <Button simple color="primary" size="lg">
                       Get started
                     </Button>
                   </div>
@@ -159,32 +159,36 @@ const LoginPage = ({ location, history }) => {
                 <List className={classes.list}>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href='https://www.creative-tim.com/?ref=mkpr-login'
-                      target='_blank'
-                      className={classes.block}>
+                      href="https://www.creative-tim.com/?ref=mkpr-login"
+                      target="_blank"
+                      className={classes.block}
+                    >
                       Creative Tim
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href='https://www.creative-tim.com/presentation?ref=mkpr-login'
-                      target='_blank'
-                      className={classes.block}>
+                      href="https://www.creative-tim.com/presentation?ref=mkpr-login"
+                      target="_blank"
+                      className={classes.block}
+                    >
                       About us
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href='//blog.creative-tim.com/'
-                      className={classes.block}>
+                      href="//blog.creative-tim.com/"
+                      className={classes.block}
+                    >
                       Blog
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href='https://www.creative-tim.com/license?ref=mkpr-login'
-                      target='_blank'
-                      className={classes.block}>
+                      href="https://www.creative-tim.com/license?ref=mkpr-login"
+                      target="_blank"
+                      className={classes.block}
+                    >
                       Licenses
                     </a>
                   </ListItem>
@@ -194,8 +198,9 @@ const LoginPage = ({ location, history }) => {
                 &copy; {1900 + new Date().getYear()} , made with{" "}
                 <Favorite className={classes.icon} /> by{" "}
                 <a
-                  href='https://www.creative-tim.com?ref=mkpr-login'
-                  target='_blank'>
+                  href="https://www.creative-tim.com?ref=mkpr-login"
+                  target="_blank"
+                >
                   Creative Tim
                 </a>{" "}
                 for a better web
@@ -204,7 +209,7 @@ const LoginPage = ({ location, history }) => {
           }
         />
       </div>
-    </div>
+    </Fragment>
   );
 };
 
