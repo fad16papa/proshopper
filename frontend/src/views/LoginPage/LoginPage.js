@@ -42,6 +42,7 @@ const useFooterPageStyle = makeStyles(footerPageStyle);
 const LoginPage = ({ location, history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
   const dispatch = useDispatch();
 
@@ -61,7 +62,11 @@ const LoginPage = ({ location, history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(login(email, password));
+    if (!email || !password) {
+      setMessage("Invalid email or password");
+    } else {
+      dispatch(login(email, password));
+    }
   };
 
   const classes = useStyles();
@@ -75,43 +80,38 @@ const LoginPage = ({ location, history }) => {
           backgroundImage: "url(" + image + ")",
           backgroundSize: "cover",
           backgroundPosition: "top center",
-        }}
-      >
+        }}>
         <div className={classes.container}>
-          <GridContainer justify="center">
+          <GridContainer justify='center'>
             <GridItem xs={12} sm={12} md={4}>
               <Card>
                 <form className={classes.form} onSubmit={submitHandler}>
                   <CardHeader
-                    color="primary"
+                    color='primary'
                     signup
-                    className={classes.cardHeader}
-                  >
+                    className={classes.cardHeader}>
                     <h4 className={classes.cardTitle}>Login</h4>
                     <div className={classes.socialLine}>
                       <Button
                         justIcon
-                        color="transparent"
+                        color='transparent'
                         className={classes.iconButtons}
-                        onClick={(e) => e.preventDefault()}
-                      >
-                        <i className="fab fa-twitter" />
+                        onClick={(e) => e.preventDefault()}>
+                        <i className='fab fa-twitter' />
                       </Button>
                       <Button
                         justIcon
-                        color="transparent"
+                        color='transparent'
                         className={classes.iconButtons}
-                        onClick={(e) => e.preventDefault()}
-                      >
-                        <i className="fab fa-facebook" />
+                        onClick={(e) => e.preventDefault()}>
+                        <i className='fab fa-facebook' />
                       </Button>
                       <Button
                         justIcon
-                        color="transparent"
+                        color='transparent'
                         className={classes.iconButtons}
-                        onClick={(e) => e.preventDefault()}
-                      >
-                        <i className="fab fa-instagram" />
+                        onClick={(e) => e.preventDefault()}>
+                        <i className='fab fa-instagram' />
                       </Button>
                     </div>
                   </CardHeader>
@@ -120,23 +120,26 @@ const LoginPage = ({ location, history }) => {
                   </p>
                   <div className={classes.textCenter}>
                     {error && (
-                      <SnackbarContent color="danger" message={error} />
+                      <SnackbarContent color='danger' message={error} />
                     )}
-                    {loading && <CircularProgress color="primary" />}
+                    {message && (
+                      <SnackbarContent color='danger' message={message} />
+                    )}
+                    {loading && <CircularProgress color='primary' />}
                   </div>
                   <CardBody signup>
                     <CustomInput
-                      id="email"
+                      id='email'
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       formControlProps={{
                         fullWidth: true,
                       }}
                       inputProps={{
-                        placeholder: "Email...",
+                        placeholder: "Email",
                         type: "email",
                         startAdornment: (
-                          <InputAdornment position="start">
+                          <InputAdornment position='start'>
                             <Email className={classes.inputIconsColor} />
                           </InputAdornment>
                         ),
@@ -144,7 +147,7 @@ const LoginPage = ({ location, history }) => {
                       }}
                     />
                     <CustomInput
-                      id="pass"
+                      id='pass'
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       formControlProps={{
@@ -154,7 +157,7 @@ const LoginPage = ({ location, history }) => {
                         placeholder: "Password",
                         type: "password",
                         startAdornment: (
-                          <InputAdornment position="start">
+                          <InputAdornment position='start'>
                             <LockIcon className={classes.inputIconsColor} />
                           </InputAdornment>
                         ),
@@ -163,7 +166,7 @@ const LoginPage = ({ location, history }) => {
                     />
                   </CardBody>
                   <div className={classes.textCenter}>
-                    <Button simple color="primary" size="lg" type="submit">
+                    <Button simple color='primary' size='lg' type='submit'>
                       Sign In
                     </Button>
                   </div>
@@ -176,8 +179,7 @@ const LoginPage = ({ location, history }) => {
                         redirect
                           ? `/register?redirect=${redirect}`
                           : "/register"
-                      }
-                    >
+                      }>
                       Register
                     </Link>{" "}
                     Now!
@@ -195,36 +197,32 @@ const LoginPage = ({ location, history }) => {
                 <List className={classes.list}>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/?ref=mkpr-login"
-                      target="_blank"
-                      className={classes.block}
-                    >
+                      href='https://www.creative-tim.com/?ref=mkpr-login'
+                      target='_blank'
+                      className={classes.block}>
                       Creative Tim
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/presentation?ref=mkpr-login"
-                      target="_blank"
-                      className={classes.block}
-                    >
+                      href='https://www.creative-tim.com/presentation?ref=mkpr-login'
+                      target='_blank'
+                      className={classes.block}>
                       About us
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="//blog.creative-tim.com/"
-                      className={classes.block}
-                    >
+                      href='//blog.creative-tim.com/'
+                      className={classes.block}>
                       Blog
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/license?ref=mkpr-login"
-                      target="_blank"
-                      className={classes.block}
-                    >
+                      href='https://www.creative-tim.com/license?ref=mkpr-login'
+                      target='_blank'
+                      className={classes.block}>
                       Licenses
                     </a>
                   </ListItem>
@@ -234,9 +232,8 @@ const LoginPage = ({ location, history }) => {
                 &copy; {1900 + new Date().getYear()} , made with{" "}
                 <Favorite className={classes.icon} /> by{" "}
                 <a
-                  href="https://www.creative-tim.com?ref=mkpr-login"
-                  target="_blank"
-                >
+                  href='https://www.creative-tim.com?ref=mkpr-login'
+                  target='_blank'>
                   Creative Tim
                 </a>{" "}
                 for a better web
