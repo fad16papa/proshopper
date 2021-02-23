@@ -33,7 +33,7 @@ import image from "../../assets/img/bg7.jpg";
 import CardFooter from "../../components/Card/CardFooter.js";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { CircularProgress, Snackbar, SnackbarContent } from "@material-ui/core";
+import { CircularProgress, SnackbarContent } from "@material-ui/core";
 import { register } from "../../actions/userAction.js";
 
 const useStyles = makeStyles(signupPageStyle);
@@ -111,9 +111,11 @@ const RegisterPage = ({ location, history }) => {
                   </Button>
                   {` `}
                   <h4 className={classes.socialTitle}>or be classical</h4>
-                  {message && <Snackbar color="danger" message={message} />}
+                  {message && (
+                    <SnackbarContent color="danger" message={message} />
+                  )}
                   {/* {checked && <SnackbarContent color="danger" message={message} />} */}
-                  {error && <Snackbar color="danger" message={error} />}
+                  {error && <SnackbarContent color="danger" message={error} />}
                   {loading && <CircularProgress color="primary" />}
                 </div>
                 <CardBody>
@@ -180,6 +182,7 @@ const RegisterPage = ({ location, history }) => {
                               </InputAdornment>
                             ),
                             placeholder: "Password...",
+                            type: "password",
                           }}
                         />
                         <CustomInput
@@ -201,6 +204,7 @@ const RegisterPage = ({ location, history }) => {
                               </InputAdornment>
                             ),
                             placeholder: "Confirm Password...",
+                            type: "password",
                           }}
                         />
                       </GridItem>
