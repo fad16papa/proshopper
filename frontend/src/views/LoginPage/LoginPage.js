@@ -23,14 +23,21 @@ import Card from "../../components/Card/Card.js";
 import CardBody from "../../components/Card/CardBody.js";
 import CardHeader from "../../components/Card/CardHeader.js";
 import CustomInput from "../../components/CustomInput/CustomInput.js";
+import SnackbarContent from "../../components/Snackbar/SnackbarContent.js";
 
 import loginPageStyle from "../../assets/jss/material-kit-pro-react/views/loginPageStyle.js";
+import footerPageStyle from "../../assets/jss/material-kit-pro-react/components/cardFooterStyle.js";
 
 import image from "../../assets/img/bg7.jpg";
 import { Fragment } from "react";
 import { login } from "../../actions/userAction";
+import CardFooter from "../../components/Card/CardFooter.js";
+import { Link } from "react-router-dom";
+import { CircularProgress } from "@material-ui/core";
+import { USER_LOGIN_RESET } from "../../constants/userConstant.js";
 
 const useStyles = makeStyles(loginPageStyle);
+const useFooterPageStyle = makeStyles(footerPageStyle);
 
 const LoginPage = ({ location, history }) => {
   const [email, setEmail] = useState("");
@@ -50,12 +57,14 @@ const LoginPage = ({ location, history }) => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   }, [history, userInfo, redirect, window, document]);
-  const classes = useStyles();
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
   };
+
+  const classes = useStyles();
+  const classesCardFooter = useFooterPageStyle();
 
   return (
     <Fragment>
@@ -65,47 +74,58 @@ const LoginPage = ({ location, history }) => {
           backgroundImage: "url(" + image + ")",
           backgroundSize: "cover",
           backgroundPosition: "top center",
-        }}>
+        }}
+      >
         <div className={classes.container}>
-          <GridContainer justify='center'>
+          <GridContainer justify="center">
             <GridItem xs={12} sm={12} md={4}>
               <Card>
                 <form className={classes.form} onSubmit={submitHandler}>
                   <CardHeader
-                    color='primary'
+                    color="primary"
                     signup
-                    className={classes.cardHeader}>
+                    className={classes.cardHeader}
+                  >
                     <h4 className={classes.cardTitle}>Login</h4>
                     <div className={classes.socialLine}>
                       <Button
                         justIcon
-                        color='transparent'
+                        color="transparent"
                         className={classes.iconButtons}
-                        onClick={(e) => e.preventDefault()}>
-                        <i className='fab fa-twitter' />
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        <i className="fab fa-twitter" />
                       </Button>
                       <Button
                         justIcon
-                        color='transparent'
+                        color="transparent"
                         className={classes.iconButtons}
-                        onClick={(e) => e.preventDefault()}>
-                        <i className='fab fa-facebook' />
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        <i className="fab fa-facebook" />
                       </Button>
                       <Button
                         justIcon
-                        color='transparent'
+                        color="transparent"
                         className={classes.iconButtons}
-                        onClick={(e) => e.preventDefault()}>
-                        <i className='fab fa-google-plus-g' />
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        <i className="fab fa-instagram" />
                       </Button>
                     </div>
                   </CardHeader>
                   <p className={classes.description + " " + classes.textCenter}>
                     Or Be Classical
                   </p>
+                  <div className={classes.textCenter}>
+                    {error && (
+                      <SnackbarContent color="danger" message={error} />
+                    )}
+                    {loading && <CircularProgress color="primary" />}
+                  </div>
                   <CardBody signup>
                     <CustomInput
-                      id='email'
+                      id="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       formControlProps={{
@@ -115,7 +135,7 @@ const LoginPage = ({ location, history }) => {
                         placeholder: "Email...",
                         type: "email",
                         startAdornment: (
-                          <InputAdornment position='start'>
+                          <InputAdornment position="start">
                             <Email className={classes.inputIconsColor} />
                           </InputAdornment>
                         ),
@@ -123,7 +143,7 @@ const LoginPage = ({ location, history }) => {
                       }}
                     />
                     <CustomInput
-                      id='pass'
+                      id="pass"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       formControlProps={{
@@ -133,7 +153,7 @@ const LoginPage = ({ location, history }) => {
                         placeholder: "Password",
                         type: "password",
                         startAdornment: (
-                          <InputAdornment position='start'>
+                          <InputAdornment position="start">
                             <LockIcon className={classes.inputIconsColor} />
                           </InputAdornment>
                         ),
@@ -142,11 +162,26 @@ const LoginPage = ({ location, history }) => {
                     />
                   </CardBody>
                   <div className={classes.textCenter}>
-                    <Button simple color='primary' size='lg' type='submit'>
+                    <Button simple color="primary" size="lg" type="submit">
                       Sign In
                     </Button>
                   </div>
                 </form>
+                <CardFooter>
+                  <div className={classesCardFooter.textRight}>
+                    New Customer?{" "}
+                    <Link
+                      to={
+                        redirect
+                          ? `/register?redirect=${redirect}`
+                          : "/register"
+                      }
+                    >
+                      Register
+                    </Link>{" "}
+                    Now!
+                  </div>
+                </CardFooter>
               </Card>
             </GridItem>
           </GridContainer>
@@ -159,32 +194,36 @@ const LoginPage = ({ location, history }) => {
                 <List className={classes.list}>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href='https://www.creative-tim.com/?ref=mkpr-login'
-                      target='_blank'
-                      className={classes.block}>
+                      href="https://www.creative-tim.com/?ref=mkpr-login"
+                      target="_blank"
+                      className={classes.block}
+                    >
                       Creative Tim
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href='https://www.creative-tim.com/presentation?ref=mkpr-login'
-                      target='_blank'
-                      className={classes.block}>
+                      href="https://www.creative-tim.com/presentation?ref=mkpr-login"
+                      target="_blank"
+                      className={classes.block}
+                    >
                       About us
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href='//blog.creative-tim.com/'
-                      className={classes.block}>
+                      href="//blog.creative-tim.com/"
+                      className={classes.block}
+                    >
                       Blog
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href='https://www.creative-tim.com/license?ref=mkpr-login'
-                      target='_blank'
-                      className={classes.block}>
+                      href="https://www.creative-tim.com/license?ref=mkpr-login"
+                      target="_blank"
+                      className={classes.block}
+                    >
                       Licenses
                     </a>
                   </ListItem>
@@ -194,8 +233,9 @@ const LoginPage = ({ location, history }) => {
                 &copy; {1900 + new Date().getYear()} , made with{" "}
                 <Favorite className={classes.icon} /> by{" "}
                 <a
-                  href='https://www.creative-tim.com?ref=mkpr-login'
-                  target='_blank'>
+                  href="https://www.creative-tim.com?ref=mkpr-login"
+                  target="_blank"
+                >
                   Creative Tim
                 </a>{" "}
                 for a better web
