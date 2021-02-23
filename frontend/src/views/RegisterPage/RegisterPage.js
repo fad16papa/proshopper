@@ -32,17 +32,25 @@ import footerPageStyle from "../../assets/jss/material-kit-pro-react/components/
 import image from "../../assets/img/bg7.jpg";
 import CardFooter from "../../components/Card/CardFooter.js";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { CircularProgress, Snackbar, SnackbarContent } from "@material-ui/core";
+import { register } from "../../actions/userAction.js";
 
 const useStyles = makeStyles(signupPageStyle);
 const useFooterPageStyle = makeStyles(footerPageStyle);
 
-const RegisterPage = ({ location }) => {
+const RegisterPage = ({ location, history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState(null);
   const [checked, setChecked] = useState([1]);
+
+  const dispatch = useDispatch();
+
+  const userRegister = useSelector((state) => state.userRegister);
+  const { loading, error, userInfo } = userRegister;
 
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
@@ -60,7 +68,16 @@ const RegisterPage = ({ location }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
-  }, [location]);
+  }, [location, history, userInfo, redirect]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      setMessage("Password do not match");
+    } else {
+      dispatch(register(name, email, password));
+    }
+  };
 
   const classes = useStyles();
   const classesCardFooter = useFooterPageStyle();
@@ -85,8 +102,8 @@ const RegisterPage = ({ location }) => {
                     <i className={classes.socials + " fab fa-twitter"} />
                   </Button>
                   {` `}
-                  <Button justIcon round color="dribbble">
-                    <i className={classes.socials + " fab fa-dribbble"} />
+                  <Button justIcon round color="instagram">
+                    <i className={classes.socials + " fab fa-instagram"} />
                   </Button>
                   {` `}
                   <Button justIcon round color="facebook">
@@ -94,12 +111,18 @@ const RegisterPage = ({ location }) => {
                   </Button>
                   {` `}
                   <h4 className={classes.socialTitle}>or be classical</h4>
+                  {message && <Snackbar color="danger" message={message} />}
+                  {/* {checked && <SnackbarContent color="danger" message={message} />} */}
+                  {error && <Snackbar color="danger" message={error} />}
+                  {loading && <CircularProgress color="primary" />}
                 </div>
                 <CardBody>
-                  <form className={classes.form}>
+                  <form className={classes.form} onSubmit={submitHandler}>
                     <GridContainer justify="center">
                       <GridItem xs={12} sm={5} md={5}>
                         <CustomInput
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
                           formControlProps={{
                             fullWidth: true,
                             className: classes.customFormControlClasses,
@@ -113,10 +136,12 @@ const RegisterPage = ({ location }) => {
                                 <Face className={classes.inputAdornmentIcon} />
                               </InputAdornment>
                             ),
-                            placeholder: "First Name...",
+                            placeholder: "Full Name...",
                           }}
                         />
                         <CustomInput
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
                           formControlProps={{
                             fullWidth: true,
                             className: classes.customFormControlClasses,
@@ -137,6 +162,8 @@ const RegisterPage = ({ location }) => {
                       </GridItem>
                       <GridItem xs={12} sm={5} md={5}>
                         <CustomInput
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
                           formControlProps={{
                             fullWidth: true,
                             className: classes.customFormControlClasses,
@@ -156,6 +183,8 @@ const RegisterPage = ({ location }) => {
                           }}
                         />
                         <CustomInput
+                          value={confirmPassword}
+                          onChange={(e) => setConfirmPassword(e.target.value)}
                           formControlProps={{
                             fullWidth: true,
                             className: classes.customFormControlClasses,
@@ -204,7 +233,7 @@ const RegisterPage = ({ location }) => {
                       />
                     </GridContainer>
                     <div className={classes.textCenter}>
-                      <Button round color="primary">
+                      <Button round color="primary" type="submit">
                         Get started
                       </Button>
                     </div>

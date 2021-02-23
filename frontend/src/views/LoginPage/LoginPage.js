@@ -54,9 +54,10 @@ const LoginPage = ({ location, history }) => {
     if (userInfo) {
       history.push(redirect);
     }
+    dispatch({ type: USER_LOGIN_RESET });
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
-  }, [history, userInfo, redirect, window, document]);
+  }, [history, userInfo, redirect, window, document, dispatch]);
 
   const submitHandler = (e) => {
     e.preventDefault();
