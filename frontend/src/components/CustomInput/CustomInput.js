@@ -69,7 +69,8 @@ export default function CustomInput(props) {
         <InputLabel
           className={classes.labelRoot + " " + labelClasses}
           htmlFor={id}
-          {...labelProps}>
+          {...labelProps}
+        >
           {labelText}
         </InputLabel>
       ) : null}
@@ -99,8 +100,8 @@ CustomInput.propTypes = {
   labelText: PropTypes.node,
   labelProps: PropTypes.object,
   id: PropTypes.string,
-  value: PropTypes.object,
-  onChange: PropTypes.object,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
   inputProps: PropTypes.object,
   formControlProps: PropTypes.object,
   inputRootCustomClasses: PropTypes.string,
