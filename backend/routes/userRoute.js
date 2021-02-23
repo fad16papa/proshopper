@@ -10,11 +10,18 @@ import {
   updateUser,
 } from "../controllers/userController.js";
 import { protect, admin } from "../middleware/authMiddleware.js";
-import { loginiValidationRules, validate } from "../validator/validator.js";
+import {
+  loginiValidationRules,
+  registerValidationRules,
+  validate,
+} from "../validator/validator.js";
 
 const router = express.Router();
 
-router.route("/").post(registerUser).get(protect, admin, getUsers);
+router
+  .route("/")
+  .post(registerValidationRules(), validate, registerUser)
+  .get(protect, admin, getUsers);
 router.post("/login", loginiValidationRules(), validate, authUser);
 router
   .route("/profile")

@@ -9,6 +9,19 @@ const loginiValidationRules = () => {
   ];
 };
 
+const registerValidationRules = () => {
+  return [
+    check("name", "Name is required").not().isEmpty(),
+    check("email", "Email is required").isEmailI(),
+    check(
+      "password",
+      "Password should be alphanumeric and has minimun length of 6"
+    )
+      .isLength({ min: 6 })
+      .isAlphanumeric(),
+  ];
+};
+
 const validate = (req, res, next) => {
   const errors = validationResult(req);
   if (errors.isEmpty()) {
@@ -22,4 +35,4 @@ const validate = (req, res, next) => {
   });
 };
 
-export { loginiValidationRules, validate };
+export { loginiValidationRules, registerValidationRules, validate };
