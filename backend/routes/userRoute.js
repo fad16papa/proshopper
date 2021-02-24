@@ -18,10 +18,7 @@ import {
 
 const router = express.Router();
 
-router
-  .route("/")
-  .post(registerValidationRules(), validate, registerUser)
-  .get(protect, admin, getUsers);
+router.route("/").post(registerUser).get(protect, admin, getUsers);
 router.post("/login", loginiValidationRules(), validate, authUser);
 router
   .route("/profile")

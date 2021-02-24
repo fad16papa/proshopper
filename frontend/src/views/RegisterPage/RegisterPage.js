@@ -68,6 +68,9 @@ const RegisterPage = ({ location, history }) => {
   };
 
   useEffect(() => {
+    if (userInfo) {
+      history.push(redirect);
+    }
     dispatch({ type: USER_REGISTER_RESET });
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
