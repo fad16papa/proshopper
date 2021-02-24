@@ -246,7 +246,7 @@ const RegisterPage = ({ location, history }) => {
                       />
                     </GridContainer>
                     <div className={classes.textCenter}>
-                      <Button round color="primary" type="submit">
+                      <Button round color="info" type="submit">
                         Get started
                       </Button>
                     </div>

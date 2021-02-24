@@ -88,7 +88,7 @@ const LoginPage = ({ location, history }) => {
               <Card>
                 <form className={classes.form} onSubmit={submitHandler}>
                   <CardHeader
-                    color="primary"
+                    color="info"
                     signup
                     className={classes.cardHeader}
                   >
@@ -171,7 +171,7 @@ const LoginPage = ({ location, history }) => {
                     />
                   </CardBody>
                   <div className={classes.textCenter}>
-                    <Button simple color="primary" size="lg" type="submit">
+                    <Button simple color="info" size="lg" type="submit">
                       Sign In
                     </Button>
                   </div>
