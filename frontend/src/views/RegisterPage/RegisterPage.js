@@ -25,6 +25,7 @@ import Card from "../../components/Card/Card.js";
 import CardBody from "../../components/Card/CardBody.js";
 import InfoArea from "../../components/InfoArea/InfoArea.js";
 import CustomInput from "../../components/CustomInput/CustomInput.js";
+import SnackbarContent from "../../components/Snackbar/SnackbarContent.js";
 
 import signupPageStyle from "../../assets/jss/material-kit-pro-react/views/signupPageStyle.js";
 import footerPageStyle from "../../assets/jss/material-kit-pro-react/components/cardFooterStyle.js";
@@ -33,8 +34,9 @@ import image from "../../assets/img/bg7.jpg";
 import CardFooter from "../../components/Card/CardFooter.js";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { CircularProgress, SnackbarContent } from "@material-ui/core";
+import { CircularProgress } from "@material-ui/core";
 import { register } from "../../actions/userAction.js";
+import { USER_REGISTER_RESET } from "../../constants/userConstant.js";
 
 const useStyles = makeStyles(signupPageStyle);
 const useFooterPageStyle = makeStyles(footerPageStyle);
@@ -66,16 +68,21 @@ const RegisterPage = ({ location, history }) => {
   };
 
   useEffect(() => {
+    dispatch({ type: USER_REGISTER_RESET });
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   }, [location, history, userInfo, redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      setMessage("Password do not match");
+    if (!name || !password || !email) {
+      setMessage("Please provide your details");
     } else {
-      dispatch(register(name, email, password));
+      if (password !== confirmPassword) {
+        setMessage("Password and ConfirmPassword do not match");
+      } else {
+        dispatch(register(name, email, password));
+      }
     }
   };
 
@@ -102,19 +109,18 @@ const RegisterPage = ({ location, history }) => {
                     <i className={classes.socials + " fab fa-twitter"} />
                   </Button>
                   {` `}
-                  <Button justIcon round color="instagram">
-                    <i className={classes.socials + " fab fa-instagram"} />
-                  </Button>
-                  {` `}
                   <Button justIcon round color="facebook">
                     <i className={classes.socials + " fab fa-facebook-f"} />
+                  </Button>
+                  {` `}
+                  <Button justIcon round color="instagram">
+                    <i className={classes.socials + " fab fa-instagram"} />
                   </Button>
                   {` `}
                   <h4 className={classes.socialTitle}>or be classical</h4>
                   {message && (
                     <SnackbarContent color="danger" message={message} />
                   )}
-                  {/* {checked && <SnackbarContent color="danger" message={message} />} */}
                   {error && <SnackbarContent color="danger" message={error} />}
                   {loading && <CircularProgress color="primary" />}
                 </div>
@@ -142,28 +148,6 @@ const RegisterPage = ({ location, history }) => {
                           }}
                         />
                         <CustomInput
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          formControlProps={{
-                            fullWidth: true,
-                            className: classes.customFormControlClasses,
-                          }}
-                          inputProps={{
-                            startAdornment: (
-                              <InputAdornment
-                                position="start"
-                                className={classes.inputAdornment}
-                              >
-                                <Email className={classes.inputAdornmentIcon} />
-                              </InputAdornment>
-                            ),
-                            placeholder: "Email...",
-                            autoComplete: "off",
-                          }}
-                        />
-                      </GridItem>
-                      <GridItem xs={12} sm={5} md={5}>
-                        <CustomInput
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
                           formControlProps={{
@@ -183,6 +167,28 @@ const RegisterPage = ({ location, history }) => {
                             ),
                             placeholder: "Password...",
                             type: "password",
+                          }}
+                        />
+                      </GridItem>
+                      <GridItem xs={12} sm={5} md={5}>
+                        <CustomInput
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          formControlProps={{
+                            fullWidth: true,
+                            className: classes.customFormControlClasses,
+                          }}
+                          inputProps={{
+                            startAdornment: (
+                              <InputAdornment
+                                position="start"
+                                className={classes.inputAdornment}
+                              >
+                                <Email className={classes.inputAdornmentIcon} />
+                              </InputAdornment>
+                            ),
+                            placeholder: "Email...",
+                            autoComplete: "off",
                           }}
                         />
                         <CustomInput

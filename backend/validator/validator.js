@@ -12,7 +12,7 @@ const loginiValidationRules = () => {
 const registerValidationRules = () => {
   return [
     check("name", "Name is required").not().isEmpty(),
-    check("email", "Email is required").isEmailI(),
+    check("email", "Email is required").isEmail(),
     check(
       "password",
       "Password should be alphanumeric and has minimun length of 6"
