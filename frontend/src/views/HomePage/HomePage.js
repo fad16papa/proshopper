@@ -47,16 +47,6 @@ const HomePage = () => {
   const classes = useStyles();
   return (
     <div>
-      {/* <Header
-        brand="ProShopper"
-        links={<HeaderLinks dropdownHoverColor="info" />}
-        fixed
-        color="transparent"
-        changeColorOnScroll={{
-          height: 300,
-          color: "info",
-        }}
-      /> */}
       <Parallax
         image={require("../../assets/img/examples/clark-street-merc.jpg")}
         filter="dark"
