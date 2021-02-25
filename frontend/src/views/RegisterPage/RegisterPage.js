@@ -94,6 +94,16 @@ const RegisterPage = ({ location, history }) => {
 
   return (
     <Fragment>
+      <Header
+        brand="ProShopper"
+        links={<HeaderLinks dropdownHoverColor="info" />}
+        fixed
+        color="transparent"
+        changeColorOnScroll={{
+          height: 300,
+          color: "info",
+        }}
+      />
       <div
         className={classes.pageHeader}
         style={{
@@ -182,6 +192,9 @@ const RegisterPage = ({ location, history }) => {
                             className: classes.customFormControlClasses,
                           }}
                           inputProps={{
+                            type: "email",
+                            placeholder: "Email...",
+                            autoComplete: "off",
                             startAdornment: (
                               <InputAdornment
                                 position="start"
@@ -190,8 +203,6 @@ const RegisterPage = ({ location, history }) => {
                                 <Email className={classes.inputAdornmentIcon} />
                               </InputAdornment>
                             ),
-                            placeholder: "Email...",
-                            autoComplete: "off",
                           }}
                         />
                         <CustomInput
@@ -258,7 +269,7 @@ const RegisterPage = ({ location, history }) => {
                     <Link
                       to={redirect ? `/login?redirect=${redirect}` : "/login"}
                     >
-                      Sign In
+                      <strong>Sign In</strong>
                     </Link>{" "}
                     Here!
                   </div>
