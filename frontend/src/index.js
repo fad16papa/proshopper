@@ -9,8 +9,6 @@ import store from "./store";
 import { Provider } from "react-redux";
 import App from "./App";
 
-var hist = createBrowserHistory();
-
 ReactDOM.render(
   <Provider store={store}>
     <App />
