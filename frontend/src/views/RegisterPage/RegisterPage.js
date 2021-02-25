@@ -94,7 +94,7 @@ const RegisterPage = ({ location, history }) => {
 
   return (
     <Fragment>
-      <Header
+      {/* <Header
         brand="ProShopper"
         links={<HeaderLinks dropdownHoverColor="info" />}
         fixed
@@ -103,7 +103,7 @@ const RegisterPage = ({ location, history }) => {
           height: 300,
           color: "info",
         }}
-      />
+      /> */}
       <div
         className={classes.pageHeader}
         style={{

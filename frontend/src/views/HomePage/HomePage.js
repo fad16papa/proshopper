@@ -47,7 +47,7 @@ const HomePage = () => {
   const classes = useStyles();
   return (
     <div>
-      <Header
+      {/* <Header
         brand="ProShopper"
         links={<HeaderLinks dropdownHoverColor="info" />}
         fixed
@@ -56,7 +56,7 @@ const HomePage = () => {
           height: 300,
           color: "info",
         }}
-      />
+      /> */}
       <Parallax
         image={require("../../assets/img/examples/clark-street-merc.jpg")}
         filter="dark"
@@ -84,7 +84,6 @@ const HomePage = () => {
           </GridContainer>
         </div>
       </Parallax>
-
       <div className={classNames(classes.main, classes.mainRaised)}>
         <SectionLatestOffers />
         <SectionProducts />

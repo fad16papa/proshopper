@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
 // react components for routing our app without refresh
@@ -46,10 +47,21 @@ import CustomDropdown from "../CustomDropdown/CustomDropdown.js";
 import Button from "../CustomButtons/Button.js";
 
 import styles from "../../assets/jss/material-kit-pro-react/components/headerLinksStyle.js";
+import headerStyles from "../../assets/jss/material-kit-pro-react/components/headerStyle.js";
+import { logout } from "../../actions/userAction.js";
 
-const useStyles = makeStyles(styles);
+const useStyles = makeStyles(styles, headerStyles);
 
-const HeaderLinks = (props, userInfo) => {
+const HeaderLinks = (props) => {
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
+
   const easeInOutQuad = (t, b, c, d) => {
     t /= d / 2;
     if (t < 1) return (c / 2) * t * t + b;
@@ -120,23 +132,19 @@ const HeaderLinks = (props, userInfo) => {
               <Link to="/about-us" className={classes.dropdownLink}>
                 <AccountCircle className={classes.dropdownIcons} /> Profile
               </Link>,
-              <Link to="/blog-post" className={classes.dropdownLink}>
+              <Link
+                to="/blog-post"
+                className={classes.dropdownLink}
+                onClick={logoutHandler}
+              >
                 <ExitToApp className={classes.dropdownIcons} /> Logout
               </Link>,
             ]}
           />
         </ListItem>
       ) : (
-        <ListItem className={classes.listItem}>
-          <Button
-            // href="https://www.creative-tim.com/product/material-kit-pro-react?ref=mkpr-navbar"
-            color={window.innerWidth < 960 ? "info" : "white"}
-            target="_blank"
-            className={classes.navButton}
-            round
-          >
-            <VpnKey className={classes.icons} /> Sign In
-          </Button>
+        <ListItem className={classes.title}>
+          <Link to="/login"> Sign In</Link>
         </ListItem>
       )}
       {userInfo && userInfo.isAdmin && (

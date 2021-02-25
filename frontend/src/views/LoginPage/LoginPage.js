@@ -74,7 +74,7 @@ const LoginPage = ({ location, history }) => {
 
   return (
     <Fragment>
-      <Header
+      {/* <Header
         brand="ProShopper"
         links={<HeaderLinks dropdownHoverColor="info" />}
         fixed
@@ -83,7 +83,7 @@ const LoginPage = ({ location, history }) => {
           height: 300,
           color: "info",
         }}
-      />
+      /> */}
       <div
         className={classes.pageHeader}
         style={{
@@ -140,7 +140,7 @@ const LoginPage = ({ location, history }) => {
                     {message && (
                       <SnackbarContent color="danger" message={message} />
                     )}
-                    {loading && <CircularProgress color="info" />}
+                    {loading && <CircularProgress />}
                   </div>
                   <CardBody signup>
                     <CustomInput
