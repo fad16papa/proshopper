@@ -13,12 +13,10 @@ const App = () => {
   return (
     <Router>
       <Fragment>
-        <HeaderMain />
-        <main>
-          <Route path="/" component={HomePage} exact />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/register" component={RegisterPage} />
-        </main>
+        {/* <HeaderMain /> */}
+        <Route path="/" component={HomePage} exact />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/register" component={RegisterPage} />
       </Fragment>
     </Router>
   );

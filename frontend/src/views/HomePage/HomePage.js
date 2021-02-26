@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React from "react";
+import React, { Fragment, useEffect } from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // core components
@@ -36,22 +36,46 @@ import face7 from "../../assets/img/faces/card-profile5-square.jpg";
 import face8 from "../../assets/img/faces/card-profile2-square.jpg";
 
 import styles from "../../assets/jss/material-kit-pro-react/views/ecommerceStyle.js";
+import backgroundImage from "../../assets/img/examples/clark-street-merc.jpg";
+import { useDispatch, useSelector } from "react-redux";
+import { listProducts } from "../../actions/ProductAction.js";
+import { CircularProgress, SnackbarContent } from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
-const HomePage = () => {
+const HomePage = ({ match }) => {
+  const keyword = match.params.keyword;
+
+  const pageNumber = match.params.pageNumber || 1;
+
+  const productList = useSelector((state) => state.productList);
+  const { loading, error, products } = productList;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(listProducts());
+  }, [dispatch]);
   React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
-  });
+  }, [dispatch, keyword, pageNumber]);
+
   const classes = useStyles();
+
   return (
     <div>
-      <Parallax
-        image={require("../../assets/img/examples/clark-street-merc.jpg")}
-        filter="dark"
-        small
-      >
+      <Header
+        brand="Material Kit PRO React"
+        links={<HeaderLinks dropdownHoverColor="info" />}
+        fixed
+        color="transparent"
+        changeColorOnScroll={{
+          height: 300,
+          color: "info",
+        }}
+      />
+      <Parallax image={backgroundImage} filter="dark" small>
         <div className={classes.container}>
           <GridContainer>
             <GridItem
@@ -75,7 +99,17 @@ const HomePage = () => {
         </div>
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
-        <SectionLatestOffers />
+        {loading ? (
+          <CircularProgress />
+        ) : error ? (
+          <SnackbarContent color="danger" message={error} />
+        ) : (
+          <Fragment>
+            {products.map((product) => {
+              <SectionLatestOffers key={product._id} product={product} />;
+            })}
+          </Fragment>
+        )}
         <SectionProducts />
       </div>
       <SectionBlog />

@@ -1,7 +1,6 @@
 //Meta import
 import React from "react";
 import ReactDOM from "react-dom";
-import { createBrowserHistory } from "history";
 import "./assets/scss/material-kit-pro-react.scss?v=1.9.0";
 import store from "./store";
 

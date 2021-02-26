@@ -34,7 +34,6 @@ import { login } from "../../actions/userAction";
 import CardFooter from "../../components/Card/CardFooter.js";
 import { Link } from "react-router-dom";
 import { CircularProgress } from "@material-ui/core";
-import { USER_LOGIN_RESET } from "../../constants/userConstant.js";
 
 const useStyles = makeStyles(loginPageStyle);
 const useFooterPageStyle = makeStyles(footerPageStyle);
@@ -55,7 +54,6 @@ const LoginPage = ({ location, history }) => {
     if (userInfo) {
       history.push(redirect);
     }
-    dispatch({ type: USER_LOGIN_RESET });
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   }, [history, userInfo, redirect, window, document, dispatch]);
@@ -74,6 +72,16 @@ const LoginPage = ({ location, history }) => {
 
   return (
     <Fragment>
+      <Header
+        brand="Material Kit PRO React"
+        links={<HeaderLinks dropdownHoverColor="info" />}
+        fixed
+        color="transparent"
+        changeColorOnScroll={{
+          height: 300,
+          color: "info",
+        }}
+      />
       <div
         className={classes.pageHeader}
         style={{

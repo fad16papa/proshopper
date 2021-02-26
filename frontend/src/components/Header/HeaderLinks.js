@@ -107,7 +107,6 @@ const HeaderLinks = (props) => {
     <List className={classes.list + " " + classes.mlAuto}>
       <ListItem className={classes.listItem}>
         <Button
-          // href="https://www.creative-tim.com/product/material-kit-pro-react?ref=mkpr-navbar"
           color={window.innerWidth < 960 ? "info" : "white"}
           target="_blank"
           className={classes.navButton}

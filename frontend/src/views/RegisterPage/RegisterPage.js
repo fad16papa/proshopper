@@ -94,6 +94,16 @@ const RegisterPage = ({ location, history }) => {
 
   return (
     <Fragment>
+      <Header
+        brand="Material Kit PRO React"
+        links={<HeaderLinks dropdownHoverColor="info" />}
+        fixed
+        color="transparent"
+        changeColorOnScroll={{
+          height: 300,
+          color: "info",
+        }}
+      />
       <div
         className={classes.pageHeader}
         style={{
