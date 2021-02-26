@@ -43,11 +43,7 @@ import { CircularProgress, SnackbarContent } from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
-const HomePage = ({ match }) => {
-  const keyword = match.params.keyword;
-
-  const pageNumber = match.params.pageNumber || 1;
-
+const HomePage = () => {
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
 
@@ -55,11 +51,9 @@ const HomePage = ({ match }) => {
 
   useEffect(() => {
     dispatch(listProducts());
-  }, [dispatch]);
-  React.useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
-  }, [dispatch, keyword, pageNumber]);
+  }, [dispatch]);
 
   const classes = useStyles();
 

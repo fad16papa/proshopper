@@ -31,33 +31,27 @@ const SelectionLatestOffers = ({ product }) => {
         <h2>Latest Offers</h2>
         <GridContainer>
           <GridItem md={4} sm={4}>
-            <Card product plain>
+            <Card key={product._id} product plain>
               <CardHeader image plain>
-                <a href="#pablo">
-                  <img src={gucci} alt="..." />
-                </a>
+                <img src={product.image} alt={product.image} />
+
                 <div
                   className={classes.coloredShadow}
-                  style={{ backgroundImage: `url(${gucci})`, opacity: 1 }}
+                  style={{
+                    backgroundImage: `url(${product.image})`,
+                    opacity: 1,
+                  }}
                 />
               </CardHeader>
               <CardBody className={classes.textCenter} plain>
-                <h4 className={classes.cardTitle}>Gucci</h4>
-                <p className={classes.cardDescription}>
-                  The structured shoulders and sleek detailing ensure a sharp
-                  silhouette. Team it with a silk pocket square and leather
-                  loafers.
-                </p>
+                <h4 className={classes.cardTitle}>{product.name}</h4>
+                <p className={classes.cardDescription}>{product.description}</p>
               </CardBody>
               <CardFooter plain>
                 <div className={classes.priceContainer}>
-                  <span className={classNames(classes.price, classes.priceOld)}>
-                    {" "}
-                    €1,430
-                  </span>
                   <span className={classNames(classes.price, classes.priceNew)}>
                     {" "}
-                    €743
+                    €{product.price}
                   </span>
                 </div>
                 <div className={classNames(classes.stats, classes.mlAuto)}>
