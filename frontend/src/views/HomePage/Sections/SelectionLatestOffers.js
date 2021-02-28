@@ -41,17 +41,16 @@ const SelectionLatestOffers = () => {
       <div className={classes.container}>
         <h2>Latest Offers</h2>
         <GridContainer>
-          {products.map((product) => {
+          {products.map((product) => (
             <GridItem key={product._id} md={4} sm={4}>
               <Card product plain>
                 <CardHeader image plain>
-                  <img src={product.image} alt={product.image} />
+                  <a href='#pablo'>
+                    <img src={product.image} alt={product.name} />
+                  </a>
                   <div
                     className={classes.coloredShadow}
-                    style={{
-                      backgroundImage: `url(${product.image})`,
-                      opacity: 1,
-                    }}
+                    style={{ backgroundImage: `url(${gucci})`, opacity: 1 }}
                   />
                 </CardHeader>
                 <CardBody className={classes.textCenter} plain>
@@ -81,9 +80,8 @@ const SelectionLatestOffers = () => {
                   </div>
                 </CardFooter>
               </Card>
-              ;
-            </GridItem>;
-          })}
+            </GridItem>
+          ))}
         </GridContainer>
       </div>
     </div>
