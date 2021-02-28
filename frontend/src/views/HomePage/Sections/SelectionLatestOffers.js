@@ -23,7 +23,7 @@ import dolce from "../../../assets/img/examples/dolce.jpg";
 
 const useStyles = makeStyles(styles);
 
-const SelectionLatestOffers = ({ product }) => {
+const SelectionLatestOffers = ({ products = [] }) => {
   const classes = useStyles();
   return (
     <div className={classes.section}>
@@ -31,43 +31,47 @@ const SelectionLatestOffers = ({ product }) => {
         <h2>Latest Offers</h2>
         <GridContainer>
           <GridItem md={4} sm={4}>
-            <Card key={product._id} product plain>
-              <CardHeader image plain>
-                <img src={product.image} alt={product.image} />
+            {products.map((product) => {
+              <Card key={product._id} product plain>
+                <CardHeader image plain>
+                  <img src={product.image} alt={product.image} />
 
-                <div
-                  className={classes.coloredShadow}
-                  style={{
-                    backgroundImage: `url(${product.image})`,
-                    opacity: 1,
-                  }}
-                />
-              </CardHeader>
-              <CardBody className={classes.textCenter} plain>
-                <h4 className={classes.cardTitle}>{product.name}</h4>
-                <p className={classes.cardDescription}>{product.description}</p>
-              </CardBody>
-              <CardFooter plain>
-                <div className={classes.priceContainer}>
-                  <span className={classNames(classes.price, classes.priceNew)}>
-                    {" "}
-                    €{product.price}
-                  </span>
-                </div>
-                <div className={classNames(classes.stats, classes.mlAuto)}>
-                  <Tooltip
-                    id="tooltip-top"
-                    title="Saved to Wishlist"
-                    placement="top"
-                    classes={{ tooltip: classes.tooltip }}
-                  >
-                    <Button justIcon simple color="rose">
-                      <Favorite />
-                    </Button>
-                  </Tooltip>
-                </div>
-              </CardFooter>
-            </Card>
+                  <div
+                    className={classes.coloredShadow}
+                    style={{
+                      backgroundImage: `url(${product.image})`,
+                      opacity: 1,
+                    }}
+                  />
+                </CardHeader>
+                <CardBody className={classes.textCenter} plain>
+                  <h4 className={classes.cardTitle}>{product.name}</h4>
+                  <p className={classes.cardDescription}>
+                    {product.description}
+                  </p>
+                </CardBody>
+                <CardFooter plain>
+                  <div className={classes.priceContainer}>
+                    <span
+                      className={classNames(classes.price, classes.priceNew)}>
+                      {" "}
+                      €{product.price}
+                    </span>
+                  </div>
+                  <div className={classNames(classes.stats, classes.mlAuto)}>
+                    <Tooltip
+                      id='tooltip-top'
+                      title='Saved to Wishlist'
+                      placement='top'
+                      classes={{ tooltip: classes.tooltip }}>
+                      <Button justIcon simple color='rose'>
+                        <Favorite />
+                      </Button>
+                    </Tooltip>
+                  </div>
+                </CardFooter>
+              </Card>;
+            })}
           </GridItem>
         </GridContainer>
       </div>

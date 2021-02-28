@@ -95,10 +95,10 @@ const RegisterPage = ({ location, history }) => {
   return (
     <Fragment>
       <Header
-        brand="Material Kit PRO React"
-        links={<HeaderLinks dropdownHoverColor="info" />}
+        brand='ProShopper'
+        links={<HeaderLinks dropdownHoverColor='info' />}
         fixed
-        color="transparent"
+        color='transparent'
         changeColorOnScroll={{
           height: 300,
           color: "info",
@@ -110,36 +110,35 @@ const RegisterPage = ({ location, history }) => {
           backgroundImage: "url(" + image + ")",
           backgroundSize: "cover",
           backgroundPosition: "top center",
-        }}
-      >
+        }}>
         <div className={classes.container}>
-          <GridContainer justify="center">
+          <GridContainer justify='center'>
             <GridItem xs={12} sm={10} md={10}>
               <Card className={classes.cardSignup}>
                 <h2 className={classes.cardTitle}>Register</h2>
                 <div className={classes.textCenter}>
-                  <Button justIcon round color="twitter">
+                  <Button justIcon round color='twitter'>
                     <i className={classes.socials + " fab fa-twitter"} />
                   </Button>
                   {` `}
-                  <Button justIcon round color="facebook">
+                  <Button justIcon round color='facebook'>
                     <i className={classes.socials + " fab fa-facebook-f"} />
                   </Button>
                   {` `}
-                  <Button justIcon round color="instagram">
+                  <Button justIcon round color='instagram'>
                     <i className={classes.socials + " fab fa-instagram"} />
                   </Button>
                   {` `}
                   <h4 className={classes.socialTitle}>or be classical</h4>
                   {message && (
-                    <SnackbarContent color="danger" message={message} />
+                    <SnackbarContent color='danger' message={message} />
                   )}
-                  {error && <SnackbarContent color="danger" message={error} />}
-                  {loading && <CircularProgress color="primary" />}
+                  {error && <SnackbarContent color='danger' message={error} />}
+                  {loading && <CircularProgress color='primary' />}
                 </div>
                 <CardBody>
                   <form className={classes.form} onSubmit={submitHandler}>
-                    <GridContainer justify="center">
+                    <GridContainer justify='center'>
                       <GridItem xs={12} sm={5} md={5}>
                         <CustomInput
                           value={name}
@@ -151,9 +150,8 @@ const RegisterPage = ({ location, history }) => {
                           inputProps={{
                             startAdornment: (
                               <InputAdornment
-                                position="start"
-                                className={classes.inputAdornment}
-                              >
+                                position='start'
+                                className={classes.inputAdornment}>
                                 <Face className={classes.inputAdornmentIcon} />
                               </InputAdornment>
                             ),
@@ -170,9 +168,8 @@ const RegisterPage = ({ location, history }) => {
                           inputProps={{
                             startAdornment: (
                               <InputAdornment
-                                position="start"
-                                className={classes.inputAdornment}
-                              >
+                                position='start'
+                                className={classes.inputAdornment}>
                                 <Icon className={classes.inputAdornmentIcon}>
                                   lock_outline
                                 </Icon>
@@ -197,9 +194,8 @@ const RegisterPage = ({ location, history }) => {
                             autoComplete: "off",
                             startAdornment: (
                               <InputAdornment
-                                position="start"
-                                className={classes.inputAdornment}
-                              >
+                                position='start'
+                                className={classes.inputAdornment}>
                                 <Email className={classes.inputAdornmentIcon} />
                               </InputAdornment>
                             ),
@@ -215,9 +211,8 @@ const RegisterPage = ({ location, history }) => {
                           inputProps={{
                             startAdornment: (
                               <InputAdornment
-                                position="start"
-                                className={classes.inputAdornment}
-                              >
+                                position='start'
+                                className={classes.inputAdornment}>
                                 <Icon className={classes.inputAdornmentIcon}>
                                   lock_outline
                                 </Icon>
@@ -251,13 +246,13 @@ const RegisterPage = ({ location, history }) => {
                         label={
                           <span>
                             I agree to the{" "}
-                            <a href="#pablo">terms and conditions</a>.
+                            <a href='#pablo'>terms and conditions</a>.
                           </span>
                         }
                       />
                     </GridContainer>
                     <div className={classes.textCenter}>
-                      <Button round color="info" type="submit">
+                      <Button round color='info' type='submit'>
                         Get started
                       </Button>
                     </div>
@@ -267,8 +262,7 @@ const RegisterPage = ({ location, history }) => {
                   <div className={classesCardFooter.textRight}>
                     Do you have already an account?{" "}
                     <Link
-                      to={redirect ? `/login?redirect=${redirect}` : "/login"}
-                    >
+                      to={redirect ? `/login?redirect=${redirect}` : "/login"}>
                       <strong>Sign In</strong>
                     </Link>{" "}
                     Here!
@@ -285,36 +279,32 @@ const RegisterPage = ({ location, history }) => {
                 <List className={classes.list}>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/?ref=mkpr-signup"
-                      target="_blank"
-                      className={classes.block}
-                    >
+                      href='https://www.creative-tim.com/?ref=mkpr-signup'
+                      target='_blank'
+                      className={classes.block}>
                       Creative Tim
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/presentation?ref=mkpr-signup"
-                      target="_blank"
-                      className={classes.block}
-                    >
+                      href='https://www.creative-tim.com/presentation?ref=mkpr-signup'
+                      target='_blank'
+                      className={classes.block}>
                       About us
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="//blog.creative-tim.com/"
-                      className={classes.block}
-                    >
+                      href='//blog.creative-tim.com/'
+                      className={classes.block}>
                       Blog
                     </a>
                   </ListItem>
                   <ListItem className={classes.inlineBlock}>
                     <a
-                      href="https://www.creative-tim.com/license?ref=mkpr-signup"
-                      target="_blank"
-                      className={classes.block}
-                    >
+                      href='https://www.creative-tim.com/license?ref=mkpr-signup'
+                      target='_blank'
+                      className={classes.block}>
                       Licenses
                     </a>
                   </ListItem>
@@ -324,9 +314,8 @@ const RegisterPage = ({ location, history }) => {
                 &copy; {1900 + new Date().getYear()} , made with{" "}
                 <Favorite className={classes.icon} /> by{" "}
                 <a
-                  href="https://www.creative-tim.com?ref=mkpr-signup"
-                  target="_blank"
-                >
+                  href='https://www.creative-tim.com?ref=mkpr-signup'
+                  target='_blank'>
                   Creative Tim
                 </a>{" "}
                 for a better web.
