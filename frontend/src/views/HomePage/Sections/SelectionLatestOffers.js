@@ -25,15 +25,15 @@ import { listProducts } from "../../../actions/ProductAction.js";
 
 const useStyles = makeStyles(styles);
 
-const SelectionLatestOffers = () => {
-  const productList = useSelector((state) => state.productList);
-  const { loading, error, products } = productList;
+const SelectionLatestOffers = ({ products }) => {
+  // const productList = useSelector((state) => state.productList);
+  // const { loading, error, products } = productList;
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(listProducts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(listProducts());
+  // }, [dispatch]);
 
   const classes = useStyles();
   return (
