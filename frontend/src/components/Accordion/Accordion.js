@@ -10,7 +10,7 @@ import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 // @material-ui/icons
 import ExpandMore from "@material-ui/icons/ExpandMore";
 
-import styles from "accordionStyle.js";
+import styles from "../../assets/jss/material-kit-pro-react/components/accordionStyle.js";
 
 const useStyles = makeStyles(styles);
 
@@ -53,8 +53,7 @@ export default function Accordion(props) {
             classes={{
               root: classes.expansionPanel,
               expanded: classes.expansionPanelExpanded,
-            }}
-          >
+            }}>
             <ExpansionPanelSummary
               expandIcon={<ExpandMore />}
               classes={{
@@ -66,8 +65,7 @@ export default function Accordion(props) {
                 }`,
                 content: classes.expansionPanelSummaryContent,
                 expandIcon: classes.expansionPanelSummaryExpandIcon,
-              }}
-            >
+              }}>
               <h4 className={classes.title}>{prop.title}</h4>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails className={classes.expansionPanelDetails}>

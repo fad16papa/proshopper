@@ -44,16 +44,21 @@ import { CircularProgress, SnackbarContent } from "@material-ui/core";
 const useStyles = makeStyles(styles);
 
 const HomePage = () => {
-  const productList = useSelector((state) => state.productList);
-  const { loading, error, products } = productList;
+  // const productList = useSelector((state) => state.productList);
+  // const { loading, error, products } = productList;
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(listProducts());
+  //   window.scrollTo(0, 0);
+  //   document.body.scrollTop = 0;
+  // }, [dispatch]);
 
   useEffect(() => {
-    dispatch(listProducts());
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
-  }, [dispatch]);
+  });
 
   const classes = useStyles();
 
@@ -92,7 +97,7 @@ const HomePage = () => {
         </div>
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
-        {loading ? (
+        {/* {loading ? (
           <CircularProgress />
         ) : error ? (
           <SnackbarContent color='danger' message={error} />
@@ -101,7 +106,9 @@ const HomePage = () => {
             <SectionLatestOffers products={products} />;
             <SectionProducts />
           </Fragment>
-        )}
+        )} */}
+        <SectionLatestOffers />;
+        <SectionProducts />
       </div>
       <SectionBlog />
       <div

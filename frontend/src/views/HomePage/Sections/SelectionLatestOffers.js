@@ -20,22 +20,32 @@ import styles from "../../../assets/jss/material-kit-pro-react/views/ecommerceSe
 import gucci from "../../../assets/img/examples/gucci.jpg";
 import tomFord from "../../../assets/img/examples/tom-ford.jpg";
 import dolce from "../../../assets/img/examples/dolce.jpg";
+import { useDispatch, useSelector } from "react-redux";
+import { listProducts } from "../../../actions/ProductAction.js";
 
 const useStyles = makeStyles(styles);
 
-const SelectionLatestOffers = ({ products = [] }) => {
+const SelectionLatestOffers = () => {
+  const productList = useSelector((state) => state.productList);
+  const { loading, error, products } = productList;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(listProducts());
+  }, [dispatch]);
+
   const classes = useStyles();
   return (
     <div className={classes.section}>
       <div className={classes.container}>
         <h2>Latest Offers</h2>
         <GridContainer>
-          <GridItem md={4} sm={4}>
-            {products.map((product) => {
-              <Card key={product._id} product plain>
+          {products.map((product) => {
+            <GridItem key={product._id} md={4} sm={4}>
+              <Card product plain>
                 <CardHeader image plain>
                   <img src={product.image} alt={product.image} />
-
                   <div
                     className={classes.coloredShadow}
                     style={{
@@ -70,9 +80,10 @@ const SelectionLatestOffers = ({ products = [] }) => {
                     </Tooltip>
                   </div>
                 </CardFooter>
-              </Card>;
-            })}
-          </GridItem>
+              </Card>
+              ;
+            </GridItem>;
+          })}
         </GridContainer>
       </div>
     </div>
