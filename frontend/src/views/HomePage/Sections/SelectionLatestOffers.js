@@ -22,6 +22,7 @@ import tomFord from "../../../assets/img/examples/tom-ford.jpg";
 import dolce from "../../../assets/img/examples/dolce.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../../../actions/ProductAction.js";
+import Rate from "../../../components/Rate/Rate.js";
 
 const useStyles = makeStyles(styles);
 
@@ -45,7 +46,7 @@ const SelectionLatestOffers = ({ products }) => {
             <GridItem key={product._id} md={4} sm={4}>
               <Card product plain>
                 <CardHeader image plain>
-                  <a href="#pablo">
+                  <a href='#pablo'>
                     <img src={product.image} alt={product.name} />
                   </a>
                   <div
@@ -62,20 +63,24 @@ const SelectionLatestOffers = ({ products }) => {
                 <CardFooter plain>
                   <div className={classes.priceContainer}>
                     <span
-                      className={classNames(classes.price, classes.priceNew)}
-                    >
+                      className={classNames(classes.price, classes.priceNew)}>
                       {" "}
                       €{product.price}
+                    </span>
+                    <span>
+                      <Rate
+                        value={product.rating}
+                        text={`${product.numReviews} reviews`}
+                        color='Green'></Rate>
                     </span>
                   </div>
                   <div className={classNames(classes.stats, classes.mlAuto)}>
                     <Tooltip
-                      id="tooltip-top"
-                      title="Saved to Wishlist"
-                      placement="top"
-                      classes={{ tooltip: classes.tooltip }}
-                    >
-                      <Button justIcon simple color="rose">
+                      id='tooltip-top'
+                      title='Saved to Wishlist'
+                      placement='top'
+                      classes={{ tooltip: classes.tooltip }}>
+                      <Button justIcon simple color='rose'>
                         <Favorite />
                       </Button>
                     </Tooltip>
