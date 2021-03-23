@@ -99,6 +99,7 @@ const HeaderLinks = (props) => {
     };
     animateScroll();
   };
+
   var onClickSections = {};
 
   const { dropdownHoverColor } = props;
@@ -140,7 +141,7 @@ const HeaderLinks = (props) => {
           />
         </ListItem>
       ) : (
-        <ListItem className={classes.title}>
+        <ListItem className={classes.root}>
           <Link to='/login'> Sign In</Link>
         </ListItem>
       )}
