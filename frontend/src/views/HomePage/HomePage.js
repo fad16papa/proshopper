@@ -58,7 +58,7 @@ const HomePage = () => {
   const classes = useStyles();
 
   return (
-    <div>
+    <Fragment>
       <Header
         brand='ProShopper'
         links={<HeaderLinks dropdownHoverColor='info' />}
@@ -334,7 +334,7 @@ const HomePage = () => {
           </GridItem>
         </GridContainer>
       </Footer>
-    </div>
+    </Fragment>
   );
 };
 

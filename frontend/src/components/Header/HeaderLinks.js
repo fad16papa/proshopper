@@ -108,10 +108,9 @@ const HeaderLinks = (props) => {
       <ListItem className={classes.listItem}>
         <Button
           color={window.innerWidth < 960 ? "info" : "white"}
-          target="_blank"
+          target='_blank'
           className={classes.navButton}
-          round
-        >
+          round>
           <ShoppingCart className={classes.icons} />
         </Button>
       </ListItem>
@@ -121,21 +120,20 @@ const HeaderLinks = (props) => {
             noLiPadding
             navDropdown
             hoverColor={dropdownHoverColor}
-            buttonText="Account"
+            buttonText='Account'
             buttonProps={{
               className: classes.navLink,
               color: "transparent",
             }}
             buttonIcon={ViewCarousel}
             dropdownList={[
-              <Link to="/about-us" className={classes.dropdownLink}>
+              <Link to='/about-us' className={classes.dropdownLink}>
                 <AccountCircle className={classes.dropdownIcons} /> Profile
               </Link>,
               <Link
-                to="/blog-post"
+                to='/blog-post'
                 className={classes.dropdownLink}
-                onClick={logoutHandler}
-              >
+                onClick={logoutHandler}>
                 <ExitToApp className={classes.dropdownIcons} /> Logout
               </Link>,
             ]}
@@ -143,7 +141,7 @@ const HeaderLinks = (props) => {
         </ListItem>
       ) : (
         <ListItem className={classes.title}>
-          <Link to="/login"> Sign In</Link>
+          <Link to='/login'> Sign In</Link>
         </ListItem>
       )}
       {userInfo && userInfo.isAdmin && (
@@ -152,20 +150,20 @@ const HeaderLinks = (props) => {
             noLiPadding
             navDropdown
             hoverColor={dropdownHoverColor}
-            buttonText="Account"
+            buttonText='Account'
             buttonProps={{
               className: classes.navLink,
               color: "transparent",
             }}
             buttonIcon={ViewCarousel}
             dropdownList={[
-              <Link to="/about-us" className={classes.dropdownLink}>
+              <Link to='/about-us' className={classes.dropdownLink}>
                 <AccountCircle className={classes.dropdownIcons} /> Users
               </Link>,
-              <Link to="/blog-post" className={classes.dropdownLink}>
+              <Link to='/blog-post' className={classes.dropdownLink}>
                 <LocalMall className={classes.dropdownIcons} /> Products
               </Link>,
-              <Link to="/blog-post" className={classes.dropdownLink}>
+              <Link to='/blog-post' className={classes.dropdownLink}>
                 <ShoppingBasket className={classes.dropdownIcons} /> Orders
               </Link>,
             ]}
