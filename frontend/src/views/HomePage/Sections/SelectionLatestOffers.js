@@ -67,24 +67,25 @@ const SelectionLatestOffers = ({ products }) => {
                       {" "}
                       €{product.price}
                     </span>
-                    <span>
+                    <span className={classes.rating}>
                       <Rate
                         value={product.rating}
                         text={`${product.numReviews} reviews`}
                         color='Green'></Rate>
                     </span>
                   </div>
-                  <div className={classNames(classes.stats, classes.mlAuto)}>
+                  <span className={classNames(classes.stats, classes.mlAuto)}>
                     <Tooltip
                       id='tooltip-top'
                       title='Saved to Wishlist'
                       placement='top'
-                      classes={{ tooltip: classes.tooltip }}>
+                      classes={{ tooltip: classes.tooltip }}
+                      className={classes.favorite}>
                       <Button justIcon simple color='rose'>
                         <Favorite />
                       </Button>
                     </Tooltip>
-                  </div>
+                  </span>
                 </CardFooter>
               </Card>
             </GridItem>

@@ -44,6 +44,12 @@ const styles = {
   textCenter: {
     textAlign: "center",
   },
+  rating: {
+    "margin-left": "50px",
+  },
+  favorite: {
+    "margin-left": "40px",
+  },
 };
 
 export default styles;
