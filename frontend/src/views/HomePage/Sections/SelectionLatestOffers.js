@@ -47,9 +47,6 @@ const SelectionLatestOffers = ({ products }) => {
             <GridItem key={product._id} md={4} sm={4}>
               <Card product plain>
                 <CardHeader image plain>
-                  {/* <a href='#pablo'>
-                    <img src={product.image} alt={product.name} />
-                  </a> */}
                   <Link to={`/product/${product._id}`}>
                     <img src={product.image} alt={product.name} />
                   </Link>
@@ -62,7 +59,6 @@ const SelectionLatestOffers = ({ products }) => {
                   <Link to={`/product/${product._id}`}>
                     <h4 className={classes.cardTitle}>{product.name}</h4>
                   </Link>
-                  {/* <h4 className={classes.cardTitle}>{product.name}</h4> */}
                   <p className={classes.cardDescription}>
                     {product.description}
                   </p>
