@@ -8,6 +8,7 @@ import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage";
 import HomePage from "./views/HomePage/HomePage";
 import HeaderMain from "./components/Header/HeaderMain";
+import ProductPage from "./views/ProductPage/ProductPage";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path='/' component={HomePage} exact />
         <Route path='/login' component={LoginPage} />
         <Route path='/register' component={RegisterPage} />
+        <Route path='/product/:id' component={ProductPage} />
       </Fragment>
     </Router>
   );

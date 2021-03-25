@@ -23,6 +23,7 @@ import dolce from "../../../assets/img/examples/dolce.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../../../actions/ProductAction.js";
 import Rate from "../../../components/Rate/Rate.js";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(styles);
 
@@ -46,16 +47,22 @@ const SelectionLatestOffers = ({ products }) => {
             <GridItem key={product._id} md={4} sm={4}>
               <Card product plain>
                 <CardHeader image plain>
-                  <a href='#pablo'>
+                  {/* <a href='#pablo'>
                     <img src={product.image} alt={product.name} />
-                  </a>
+                  </a> */}
+                  <Link to={`/product/${product._id}`}>
+                    <img src={product.image} alt={product.name} />
+                  </Link>
                   <div
                     className={classes.coloredShadow}
                     style={{ backgroundImage: `url(${gucci})`, opacity: 1 }}
                   />
                 </CardHeader>
                 <CardBody className={classes.textCenter} plain>
-                  <h4 className={classes.cardTitle}>{product.name}</h4>
+                  <Link to={`/product/${product._id}`}>
+                    <h4 className={classes.cardTitle}>{product.name}</h4>
+                  </Link>
+                  {/* <h4 className={classes.cardTitle}>{product.name}</h4> */}
                   <p className={classes.cardDescription}>
                     {product.description}
                   </p>
