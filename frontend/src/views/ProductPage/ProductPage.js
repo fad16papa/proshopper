@@ -43,9 +43,10 @@ import product1 from "../../assets/img/examples/product1.jpg";
 import product2 from "../../assets/img/examples/product2.jpg";
 import product3 from "../../assets/img/examples/product3.jpg";
 import product4 from "../../assets/img/examples/product4.jpg";
+import { Fragment } from "react";
 
 const ProductPage = () => {
-  return <div></div>;
+  return <Fragment></Fragment>;
 };
 
 export default ProductPage;
