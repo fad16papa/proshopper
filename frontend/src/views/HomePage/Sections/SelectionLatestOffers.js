@@ -28,15 +28,6 @@ import { Link } from "react-router-dom";
 const useStyles = makeStyles(styles);
 
 const SelectionLatestOffers = ({ products }) => {
-  // const productList = useSelector((state) => state.productList);
-  // const { loading, error, products } = productList;
-
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(listProducts());
-  // }, [dispatch]);
-
   const classes = useStyles();
   return (
     <div className={classes.section}>
