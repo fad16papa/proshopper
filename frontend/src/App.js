@@ -13,10 +13,9 @@ const App = () => {
   return (
     <Router>
       <Fragment>
-        {/* <HeaderMain /> */}
-        <Route path="/" component={HomePage} exact />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/register" component={RegisterPage} />
+        <Route path='/' component={HomePage} exact />
+        <Route path='/login' component={LoginPage} />
+        <Route path='/register' component={RegisterPage} />
       </Fragment>
     </Router>
   );
