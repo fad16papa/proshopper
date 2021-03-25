@@ -65,7 +65,7 @@ const SelectionLatestOffers = ({ products }) => {
                       <Rate
                         value={product.rating}
                         text={`${product.numReviews} reviews`}
-                        color='Green'></Rate>
+                        color='#00acc1'></Rate>
                     </span>
                   </div>
                   <span className={classNames(classes.stats, classes.mlAuto)}>
