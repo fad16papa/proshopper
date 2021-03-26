@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React from "react";
+import React, { useEffect } from "react";
 import { useState, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // nodejs library that concatenates classes
@@ -46,10 +46,11 @@ import product2 from "../../assets/img/examples/product2.jpg";
 import product3 from "../../assets/img/examples/product3.jpg";
 import product4 from "../../assets/img/examples/product4.jpg";
 import backgrond from "../../assets/img/bg6.jpg";
+import { listProductDetails } from "../../actions/ProductAction.js";
 
 const useStyles = makeStyles(productStyle);
 
-const ProductPage = () => {
+const ProductPage = ({ history, match }) => {
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
@@ -64,6 +65,16 @@ const ProductPage = () => {
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, product, error } = productDetails;
+
+  useEffect(() => {
+    // if (successProductReview) {
+    //   alert("Review submitted");
+    //   setRating(0);
+    //   setComment("");
+    //   dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
+    // }
+    dispatch(listProductDetails(match.params.id));
+  }, [dispatch, match]);
 
   const images = [
     {
@@ -150,31 +161,11 @@ const ProductPage = () => {
                     collapses={[
                       {
                         title: "Description",
-                        content: (
-                          <p>
-                            Eres{"'"} daring {"'"}Grigri Fortune{"'"} swimsuit
-                            has the fit and coverage of a bikini in a one-piece
-                            silhouette. This fuchsia style is crafted from the
-                            label{"'"}s sculpting peau douce fabric and has
-                            flattering cutouts through the torso and back. Wear
-                            yours with mirrored sunglasses on vacation.
-                          </p>
-                        ),
+                        content: <p>{product.description}</p>,
                       },
                       {
                         title: "Designer Information",
-                        content: (
-                          <p>
-                            An infusion of West Coast cool and New York
-                            attitude, Rebecca Minkoff is synonymous with It girl
-                            style. Minkoff burst on the fashion scene with her
-                            best-selling {"'"}Morning After Bag{"'"} and later
-                            expanded her offering with the Rebecca Minkoff
-                            Collection - a range of luxe city staples with a{" "}
-                            {'"'}
-                            downtown romantic{'"'} theme.
-                          </p>
-                        ),
+                        content: <p>{product.description}</p>,
                       },
                       {
                         title: "Details and Care",
