@@ -154,8 +154,8 @@ const ProductPage = ({ history, match }) => {
                   />
                 </GridItem>
                 <GridItem md={6} sm={6}>
-                  <h2 className={classes.title}>Becky Silk Blazer</h2>
-                  <h3 className={classes.mainPrice}>$335</h3>
+                  <h2 className={classes.title}>{product.name}</h2>
+                  <h3 className={classes.mainPrice}>${product.price}</h3>
                   <Accordion
                     active={0}
                     activeColor='info'
