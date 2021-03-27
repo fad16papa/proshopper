@@ -108,10 +108,7 @@ const ProductPage = ({ history, match }) => {
             color: "info",
           }}
         />
-        <Parallax
-          image={backgrond}
-          filter='transparent'
-          className={classes.pageHeader}>
+        <Parallax image={backgrond} className={classes.pageHeader}>
           <div className={classes.container}>
             <GridContainer className={classes.titleRow}>
               <GridItem md={4} className={classes.mlAuto}>
@@ -130,7 +127,7 @@ const ProductPage = ({ history, match }) => {
                   <ImageGallery
                     showFullscreenButton={false}
                     showPlayButton={false}
-                    startIndex={3}
+                    startIndex={0}
                     items={images}
                     showThumbnails={true}
                     renderLeftNav={(onClick, disabled) => {
