@@ -78,22 +78,23 @@ const ProductPage = ({ history, match }) => {
 
   const images = [
     {
-      original: product3,
-      thumbnail: product3,
+      original: product.image,
+      thumbnail: product.image,
     },
     {
-      original: product4,
-      thumbnail: product4,
+      original: product.image,
+      thumbnail: product.image,
     },
     {
-      original: product1,
-      thumbnail: product1,
+      original: product.image,
+      thumbnail: product.image,
     },
     {
-      original: product2,
-      thumbnail: product2,
+      original: product.image,
+      thumbnail: product.image,
     },
   ];
+
   return (
     <Fragment>
       <div className={classes.productPage}>
@@ -104,12 +105,12 @@ const ProductPage = ({ history, match }) => {
           color='transparent'
           changeColorOnScroll={{
             height: 100,
-            color: "rose",
+            color: "info",
           }}
         />
         <Parallax
           image={backgrond}
-          filter='rose'
+          filter='transparent'
           className={classes.pageHeader}>
           <div className={classes.container}>
             <GridContainer className={classes.titleRow}>
@@ -157,7 +158,7 @@ const ProductPage = ({ history, match }) => {
                   <h3 className={classes.mainPrice}>$335</h3>
                   <Accordion
                     active={0}
-                    activeColor='rose'
+                    activeColor='info'
                     collapses={[
                       {
                         title: "Description",
@@ -283,7 +284,7 @@ const ProductPage = ({ history, match }) => {
                     </GridItem>
                   </GridContainer>
                   <GridContainer className={classes.pullRight}>
-                    <Button round color='rose'>
+                    <Button round color='info'>
                       Add to Cart &nbsp; <ShoppingCart />
                     </Button>
                   </GridContainer>
