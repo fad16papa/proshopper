@@ -100,7 +100,7 @@ const ProductPage = ({ history, match }) => {
       <div className={classes.productPage}>
         <Header
           brand='ProShopper'
-          links={<HeaderLinks dropdownHoverColor='rose' />}
+          links={<HeaderLinks dropdownHoverColor='info' />}
           fixed
           color='transparent'
           changeColorOnScroll={{
