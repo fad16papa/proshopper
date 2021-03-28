@@ -47,10 +47,9 @@ import CustomDropdown from "../CustomDropdown/CustomDropdown.js";
 import Button from "../CustomButtons/Button.js";
 
 import styles from "../../assets/jss/material-kit-pro-react/components/headerLinksStyle.js";
-import headerStyles from "../../assets/jss/material-kit-pro-react/components/headerStyle.js";
 import { logout } from "../../actions/userAction.js";
 
-const useStyles = makeStyles(styles, headerStyles);
+const useStyles = makeStyles(styles);
 
 const HeaderLinks = (props) => {
   const userLogin = useSelector((state) => state.userLogin);
