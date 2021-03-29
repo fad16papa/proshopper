@@ -46,7 +46,7 @@ import product2 from "../../assets/img/examples/product2.jpg";
 import product3 from "../../assets/img/examples/product3.jpg";
 import product4 from "../../assets/img/examples/product4.jpg";
 import backgrond from "../../assets/img/bg6.jpg";
-import { listProductDetails } from "../../actions/ProductAction.js";
+import { listProductDetails } from "../../actions/productAction.js";
 
 const useStyles = makeStyles(productStyle);
 
@@ -75,6 +75,10 @@ const ProductPage = ({ history, match }) => {
     // }
     dispatch(listProductDetails(match.params.id));
   }, [dispatch, match]);
+
+  const addToCartHandler = () => {
+    history.push(`/cart/${match.params.id}`);
+  };
 
   const images = [
     {
@@ -184,104 +188,8 @@ const ProductPage = ({ history, match }) => {
                       },
                     ]}
                   />
-                  <GridContainer className={classes.pickSize}>
-                    <GridItem md={6} sm={6}>
-                      <label>Select color</label>
-                      <FormControl
-                        fullWidth
-                        className={classes.selectFormControl}>
-                        <Select
-                          MenuProps={{
-                            className: classes.selectMenu,
-                          }}
-                          classes={{
-                            select: classes.select,
-                          }}
-                          value={colorSelect}
-                          onChange={(event) =>
-                            setColorSelect(event.target.value)
-                          }
-                          inputProps={{
-                            name: "colorSelect",
-                            id: "color-select",
-                          }}>
-                          <MenuItem
-                            classes={{
-                              root: classes.selectMenuItem,
-                              selected: classes.selectMenuItemSelected,
-                            }}
-                            value='0'>
-                            Rose
-                          </MenuItem>
-                          <MenuItem
-                            classes={{
-                              root: classes.selectMenuItem,
-                              selected: classes.selectMenuItemSelected,
-                            }}
-                            value='1'>
-                            Gray
-                          </MenuItem>
-                          <MenuItem
-                            classes={{
-                              root: classes.selectMenuItem,
-                              selected: classes.selectMenuItemSelected,
-                            }}
-                            value='2'>
-                            White
-                          </MenuItem>
-                        </Select>
-                      </FormControl>
-                    </GridItem>
-                    <GridItem md={6} sm={6}>
-                      <label>Select size</label>
-                      <FormControl
-                        fullWidth
-                        className={classes.selectFormControl}>
-                        <Select
-                          MenuProps={{
-                            className: classes.selectMenu,
-                          }}
-                          classes={{
-                            select: classes.select,
-                          }}
-                          value={sizeSelect}
-                          onChange={(event) =>
-                            setSizeSelect(event.target.value)
-                          }
-                          inputProps={{
-                            name: "sizeSelect",
-                            id: "size-select",
-                          }}>
-                          <MenuItem
-                            classes={{
-                              root: classes.selectMenuItem,
-                              selected: classes.selectMenuItemSelected,
-                            }}
-                            value='0'>
-                            Small
-                          </MenuItem>
-                          <MenuItem
-                            classes={{
-                              root: classes.selectMenuItem,
-                              selected: classes.selectMenuItemSelected,
-                            }}
-                            value='1'>
-                            Medium
-                          </MenuItem>
-                          <MenuItem
-                            classes={{
-                              root: classes.selectMenuItem,
-                              selected: classes.selectMenuItemSelected,
-                            }}
-                            value='2'>
-                            Large
-                          </MenuItem>
-                        </Select>
-                      </FormControl>
-                    </GridItem>
-                  </GridContainer>
                   <GridContainer className={classes.pullRight}>
-                    <Button round color='info'>
+                    <Button round color='info' onClick={addToCartHandler}>
                       Add to Cart &nbsp; <ShoppingCart />
                     </Button>
                   </GridContainer>

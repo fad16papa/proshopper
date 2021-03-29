@@ -21,7 +21,6 @@ import gucci from "../../../assets/img/examples/gucci.jpg";
 import tomFord from "../../../assets/img/examples/tom-ford.jpg";
 import dolce from "../../../assets/img/examples/dolce.jpg";
 import { useDispatch, useSelector } from "react-redux";
-import { listProducts } from "../../../actions/ProductAction.js";
 import Rate from "../../../components/Rate/Rate.js";
 import { Link } from "react-router-dom";
 

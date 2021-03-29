@@ -9,6 +9,7 @@ import RegisterPage from "./views/RegisterPage/RegisterPage";
 import HomePage from "./views/HomePage/HomePage";
 import HeaderMain from "./components/Header/HeaderMain";
 import ProductPage from "./views/ProductPage/ProductPage";
+import ShoppingCartPage from "./views/ShoppingCartPage.js/ShoppingCartPage";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path='/login' component={LoginPage} />
         <Route path='/register' component={RegisterPage} />
         <Route path='/product/:id' component={ProductPage} />
+        <Route path='/cart/:id' component={ShoppingCartPage} />
       </Fragment>
     </Router>
   );

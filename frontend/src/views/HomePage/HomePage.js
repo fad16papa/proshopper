@@ -38,8 +38,8 @@ import face8 from "../../assets/img/faces/card-profile2-square.jpg";
 import styles from "../../assets/jss/material-kit-pro-react/views/ecommerceStyle.js";
 import backgroundImage from "../../assets/img/examples/clark-street-merc.jpg";
 import { useDispatch, useSelector } from "react-redux";
-import { listProducts } from "../../actions/ProductAction.js";
 import { CircularProgress, SnackbarContent } from "@material-ui/core";
+import { listProducts } from "../../actions/productAction.js";
 
 const useStyles = makeStyles(styles);
 
