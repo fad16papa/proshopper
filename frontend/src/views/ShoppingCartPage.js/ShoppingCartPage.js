@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -29,16 +29,34 @@ import shoppingCartStyle from "../../assets/jss/material-kit-pro-react/views/sho
 import product1 from "../../assets/img/product1.jpg";
 import product2 from "../../assets/img/product2.jpg";
 import product3 from "../../assets/img/product3.jpg";
+import backgroundImage from "../../assets/img/examples/bg2.jpg";
+import { useDispatch, useSelector } from "react-redux";
+import { saveShippingAddress } from "../../actions/cartAction.js";
 
 const useStyle = makeStyles(shoppingCartStyle);
 
-const ShoppingCartPage = ({}) => {
+const ShoppingCartPage = ({ history }) => {
+  const cart = useSelector((state) => state.cart);
+  const { shippingAddress } = cart;
+
+  const [address, setAddress] = useState(shippingAddress.address);
+  const [city, setCity] = useState(shippingAddress.city);
+  const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
+  const [country, setCountry] = useState(shippingAddress.country);
+
+  const dispatch = useDispatch();
+  const classes = useStyle();
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   });
 
-  const classes = useStyle();
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(saveShippingAddress({ address, city, postalCode, country }));
+    history.push("/payment");
+  };
 
   return (
     <Fragment>
@@ -53,7 +71,7 @@ const ShoppingCartPage = ({}) => {
         }}
       />
 
-      <Parallax image={product2} filter='dark' small>
+      <Parallax image={backgroundImage} filter='dark' small>
         <div className={classes.container}>
           <GridContainer>
             <GridItem
@@ -75,16 +93,7 @@ const ShoppingCartPage = ({}) => {
             <CardBody plain>
               <h3 className={classes.cardTitle}>Shopping Cart</h3>
               <Table
-                tableHead={[
-                  "",
-                  "PRODUCT",
-                  "COLOR",
-                  "SIZE",
-                  "PRICE",
-                  "QTY",
-                  "AMOUNT",
-                  "",
-                ]}
+                tableHead={["", "PRODUCT", "PRICE", "QTY", "AMOUNT", ""]}
                 tableData={[
                   [
                     <div className={classes.imgContainer} key={1}>
@@ -99,8 +108,6 @@ const ShoppingCartPage = ({}) => {
                         by Dolce&amp;Gabbana
                       </small>
                     </span>,
-                    "Red",
-                    "M",
                     <span key={1}>
                       <small className={classes.tdNumberSmall}>€</small> 549
                     </span>,
@@ -148,8 +155,6 @@ const ShoppingCartPage = ({}) => {
                       <br />
                       <small className={classes.tdNameSmall}>by Gucci</small>
                     </span>,
-                    "Purple",
-                    "M",
                     <span key={1}>
                       <small className={classes.tdNumberSmall}>€</small> 499
                     </span>,
@@ -199,8 +204,6 @@ const ShoppingCartPage = ({}) => {
                         by Valentino
                       </small>
                     </span>,
-                    "White",
-                    "XL",
                     <span key={1}>
                       <small className={classes.tdNumberSmall}>€</small> 799
                     </span>,
