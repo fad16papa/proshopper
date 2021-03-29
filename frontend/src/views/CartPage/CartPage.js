@@ -31,7 +31,7 @@ import product2 from "../../assets/img/product2.jpg";
 import product3 from "../../assets/img/product3.jpg";
 import backgroundImage from "../../assets/img/examples/bg2.jpg";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, saveShippingAddress } from "../../actions/cartAction.js";
+import { addToCart, removeFromCart } from "../../actions/cartAction.js";
 
 const useStyle = makeStyles(shoppingCartStyle);
 
@@ -56,6 +56,14 @@ const CartPage = ({ match, location, history }) => {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   }, [dispatch, productId, qty]);
+
+  const removeFromContainer = (id) => {
+    dispatch(removeFromCart(id));
+  };
+
+  const checkOutHandler = () => {
+    history.push("/login?redirect=shipping");
+  };
 
   return (
     <Fragment>
