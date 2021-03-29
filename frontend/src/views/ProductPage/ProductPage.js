@@ -78,7 +78,7 @@ const ProductPage = ({ history, match }) => {
   }, [dispatch, match]);
 
   const addToCartHandler = () => {
-    history.push(`/cart/${match.params.id}`);
+    history.push(`/cart/${match.params.id}?qty=${qty}`);
   };
 
   const images = [
@@ -114,7 +114,7 @@ const ProductPage = ({ history, match }) => {
           }}
         />
         {loading ? (
-          <Loader />
+          <CircularProgress />
         ) : error ? (
           <Message variant='danger'>{error}</Message>
         ) : (

@@ -31,32 +31,31 @@ import product2 from "../../assets/img/product2.jpg";
 import product3 from "../../assets/img/product3.jpg";
 import backgroundImage from "../../assets/img/examples/bg2.jpg";
 import { useDispatch, useSelector } from "react-redux";
-import { saveShippingAddress } from "../../actions/cartAction.js";
+import { addToCart, saveShippingAddress } from "../../actions/cartAction.js";
 
 const useStyle = makeStyles(shoppingCartStyle);
 
-const ShoppingCartPage = ({ history }) => {
-  const cart = useSelector((state) => state.cart);
-  const { shippingAddress } = cart;
+const CartPage = ({ match, location, history }) => {
+  const productId = match.params.id;
 
-  const [address, setAddress] = useState(shippingAddress.address);
-  const [city, setCity] = useState(shippingAddress.city);
-  const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
-  const [country, setCountry] = useState(shippingAddress.country);
+  //This will get the location param in URL (ex. ?qty=1 then split it to '=' then get the [1] index
+  // of the split object or else set the qty to 1)
+  const qty = location.search ? Number(location.search.split("=")[1]) : 1;
+
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
 
   const dispatch = useDispatch();
+
   const classes = useStyle();
 
   useEffect(() => {
+    if (productId) {
+      dispatch(addToCart(productId, qty));
+    }
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
-  });
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    dispatch(saveShippingAddress({ address, city, postalCode, country }));
-    history.push("/payment");
-  };
+  }, [dispatch, productId, qty]);
 
   return (
     <Fragment>
@@ -338,4 +337,4 @@ const ShoppingCartPage = ({ history }) => {
   );
 };
 
-export default ShoppingCartPage;
+export default CartPage;
