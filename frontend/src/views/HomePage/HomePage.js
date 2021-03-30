@@ -60,16 +60,16 @@ const HomePage = () => {
   return (
     <Fragment>
       <Header
-        brand='ProShopper'
-        links={<HeaderLinks dropdownHoverColor='info' />}
+        brand="ProShopper"
+        links={<HeaderLinks dropdownHoverColor="info" />}
         fixed
-        color='transparent'
+        color="transparent"
         changeColorOnScroll={{
           height: 300,
           color: "info",
         }}
       />
-      <Parallax image={backgroundImage} filter='dark' small>
+      <Parallax image={backgroundImage} filter="dark" small>
         <div className={classes.container}>
           <GridContainer>
             <GridItem
@@ -79,7 +79,8 @@ const HomePage = () => {
                 classes.mlAuto,
                 classes.mrAuto,
                 classes.textCenter
-              )}>
+              )}
+            >
               <div className={classes.brand}>
                 <h1 className={classes.title}>Ecommerce Page!</h1>
                 <h4>
@@ -95,7 +96,7 @@ const HomePage = () => {
         {loading ? (
           <CircularProgress />
         ) : error ? (
-          <SnackbarContent color='danger' message={error} />
+          <SnackbarContent color="danger" message={error} />
         ) : (
           <Fragment>
             <SectionLatestOffers products={products} />;
@@ -109,14 +110,16 @@ const HomePage = () => {
           classes.subscribeLine,
           classes.subscribeLineImage
         )}
-        style={{ backgroundImage: `url(${ecommerceHeader})` }}>
+        style={{ backgroundImage: `url(${ecommerceHeader})` }}
+      >
         <div className={classes.container}>
           <GridContainer>
             <GridItem
               xs={12}
               sm={6}
               md={6}
-              className={classNames(classes.mlAuto, classes.mrAuto)}>
+              className={classNames(classes.mlAuto, classes.mrAuto)}
+            >
               <div className={classes.textCenter}>
                 <h3 className={classes.title}>Subscribe to our Newsletter</h3>
                 <p className={classes.description}>
@@ -130,14 +133,14 @@ const HomePage = () => {
                     <GridContainer>
                       <GridItem xs={12} sm={6} md={6} lg={8}>
                         <CustomInput
-                          id='emailPreFooter'
+                          id="emailPreFooter"
                           formControlProps={{
                             fullWidth: true,
                             className: classes.cardForm,
                           }}
                           inputProps={{
                             startAdornment: (
-                              <InputAdornment position='start'>
+                              <InputAdornment position="start">
                                 <Mail />
                               </InputAdornment>
                             ),
@@ -147,9 +150,10 @@ const HomePage = () => {
                       </GridItem>
                       <GridItem xs={12} sm={6} md={6} lg={4}>
                         <Button
-                          color='info'
+                          color="info"
                           block
-                          className={classes.subscribeButton}>
+                          className={classes.subscribeButton}
+                        >
                           subscribe
                         </Button>
                       </GridItem>
@@ -163,48 +167,53 @@ const HomePage = () => {
       </div>
 
       <Footer
-        theme='dark'
+        theme="dark"
         content={
           <div>
             <div className={classes.left}>
               <List className={classes.list}>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href='http://blog.creative-tim.com/?ref=mkpr-e-ecommerce'
-                    target='_blank'
-                    className={classes.block}>
+                    href="http://blog.creative-tim.com/?ref=mkpr-e-ecommerce"
+                    target="_blank"
+                    className={classes.block}
+                  >
                     Blog
                   </a>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href='https://www.creative-tim.com/presentation?ref=mkpr-e-ecommerce'
-                    target='_blank'
-                    className={classes.block}>
+                    href="https://www.creative-tim.com/presentation?ref=mkpr-e-ecommerce"
+                    target="_blank"
+                    className={classes.block}
+                  >
                     Presentation
                   </a>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href='#pablito'
+                    href="#pablito"
                     onClick={(e) => e.preventDefault()}
-                    className={classes.block}>
+                    className={classes.block}
+                  >
                     Discover
                   </a>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href='#pablito'
+                    href="#pablito"
                     onClick={(e) => e.preventDefault()}
-                    className={classes.block}>
+                    className={classes.block}
+                  >
                     Payment
                   </a>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href='https://www.creative-tim.com/contact-us?ref=mkpr-e-ecommerce'
-                    target='_blank'
-                    className={classes.block}>
+                    href="https://www.creative-tim.com/contact-us?ref=mkpr-e-ecommerce"
+                    target="_blank"
+                    className={classes.block}
+                  >
                     Contact us
                   </a>
                 </ListItem>
@@ -213,15 +222,17 @@ const HomePage = () => {
             <div className={classes.right}>
               Copyright &copy; {1900 + new Date().getYear()}{" "}
               <a
-                href='https://www.creative-tim.com?ref=mkpr-e-ecommerce'
-                target='_blank'
-                className={classes.aClasses}>
+                href="https://www.creative-tim.com?ref=mkpr-e-ecommerce"
+                target="_blank"
+                className={classes.aClasses}
+              >
                 Creative Tim
               </a>{" "}
               All Rights Reserved.
             </div>
           </div>
-        }>
+        }
+      >
         <GridContainer>
           <GridItem xs={12} sm={4} md={4}>
             <h5>About Us</h5>
@@ -239,15 +250,15 @@ const HomePage = () => {
             <h5>Social Feed</h5>
             <div className={classes.socialFeed}>
               <div>
-                <i className='fab fa-twitter' />
+                <i className="fab fa-twitter" />
                 <p>How to handle ethical disagreements with your clients.</p>
               </div>
               <div>
-                <i className='fab fa-twitter' />
+                <i className="fab fa-twitter" />
                 <p>The tangible benefits of designing at 1x pixel density.</p>
               </div>
               <div>
-                <i className='fab fa-facebook-square' />
+                <i className="fab fa-facebook-square" />
                 <p>
                   A collection of 25 stunning sites that you can use for
                   inspiration.
@@ -265,7 +276,7 @@ const HomePage = () => {
                   classes.imgRaised,
                   classes.imgRounded
                 )}
-                alt='...'
+                alt="..."
               />
               <img
                 src={face2}
@@ -274,7 +285,7 @@ const HomePage = () => {
                   classes.imgRaised,
                   classes.imgRounded
                 )}
-                alt='...'
+                alt="..."
               />
               <img
                 src={face3}
@@ -283,7 +294,7 @@ const HomePage = () => {
                   classes.imgRaised,
                   classes.imgRounded
                 )}
-                alt='...'
+                alt="..."
               />
               <img
                 src={face4}
@@ -292,7 +303,7 @@ const HomePage = () => {
                   classes.imgRaised,
                   classes.imgRounded
                 )}
-                alt='...'
+                alt="..."
               />
               <img
                 src={face5}
@@ -301,7 +312,7 @@ const HomePage = () => {
                   classes.imgRaised,
                   classes.imgRounded
                 )}
-                alt='...'
+                alt="..."
               />
               <img
                 src={face6}
@@ -310,7 +321,7 @@ const HomePage = () => {
                   classes.imgRaised,
                   classes.imgRounded
                 )}
-                alt='...'
+                alt="..."
               />
               <img
                 src={face7}
@@ -319,7 +330,7 @@ const HomePage = () => {
                   classes.imgRaised,
                   classes.imgRounded
                 )}
-                alt='...'
+                alt="..."
               />
               <img
                 src={face8}
@@ -328,7 +339,7 @@ const HomePage = () => {
                   classes.imgRaised,
                   classes.imgRounded
                 )}
-                alt='...'
+                alt="..."
               />
             </div>
           </GridItem>
