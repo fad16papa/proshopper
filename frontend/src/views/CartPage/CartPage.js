@@ -149,7 +149,6 @@ const CartPage = ({ match, location, history }) => {
                       </Button>
                     </Tooltip>,
                   ],
-
                   {
                     purchase: true,
                     colspan: "3",

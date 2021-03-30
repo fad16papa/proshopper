@@ -111,7 +111,9 @@ const HeaderLinks = (props) => {
           target='_blank'
           className={classes.navButton}
           round>
-          <ShoppingCart className={classes.icons} />
+          <Link to='/cart'>
+            <ShoppingCart className={classes.icons} />
+          </Link>
         </Button>
       </ListItem>
       {userInfo ? (

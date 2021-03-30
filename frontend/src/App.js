@@ -19,7 +19,8 @@ const App = () => {
         <Route path='/login' component={LoginPage} />
         <Route path='/register' component={RegisterPage} />
         <Route path='/product/:id' component={ProductPage} />
-        <Route path='/cart/:id' component={CartPage} />
+        <Route path='/cart/:id' component={CartPage} exact />
+        <Route path='/cart' component={CartPage} exact />
       </Fragment>
     </Router>
   );
