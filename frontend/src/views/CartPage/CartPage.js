@@ -100,8 +100,8 @@ const CartPage = ({ match, location, history }) => {
               <h3 className={classes.cardTitle}>Shopping Cart</h3>
               <Table
                 tableHead={["", "PRODUCT", "PRICE", "QTY", "AMOUNT", ""]}
-                tableData={
-                  cartItems.map((item) => [
+                tableData={cartItems.map(
+                  (item) => [
                     <div className={classes.imgContainer} key={item.product}>
                       <img src={item.image} alt="..." className={classes.img} />
                     </div>,
@@ -151,93 +151,26 @@ const CartPage = ({ match, location, history }) => {
                         <Close />
                       </Button>
                     </Tooltip>,
-                  ])
-                  // [
-                  //   cartItems.map((item) => (
-                  // <div className={classes.imgContainer} key={1}>
-                  //   <img
-                  //     src={item.image}
-                  //     alt="..."
-                  //     className={classes.img}
-                  //   />
-                  // </div>
-                  //   )),
-                  //   cartItems.map((item) => (
-                  //     <span key={item.product}>
-                  //       <a href="#jacket" className={classes.tdNameAnchor}>
-                  //         {item.name}
-                  //       </a>
-                  //       <br />
-                  //     </span>
-                  //   )),
-                  //   cartItems.map((item) => (
-                  //     <span key={item.product}>
-                  //       <small className={classes.tdNumberSmall}>€</small>
-                  //       {item.price}
-                  //     </span>
-                  //   )),
-                  //   cartItems.map((item) => (
-                  //     <span key={item.product}>
-                  //       {item.qty}
-                  //       {` `}
-                  //       <div className={classes.buttonGroup}>
-                  //         <Button
-                  //           color="info"
-                  //           size="sm"
-                  //           round
-                  //           className={classes.firstButton}
-                  //         >
-                  //           <Remove />
-                  //         </Button>
-                  //         <Button
-                  //           color="info"
-                  //           size="sm"
-                  //           round
-                  //           className={classes.lastButton}
-                  //         >
-                  //           <Add />
-                  //         </Button>
-                  //       </div>
-                  //     </span>
-                  //   )),
-                  //   cartItems.map((item) => (
-                  //     <span key={item.product}>
-                  //       <small className={classes.tdNumberSmall}>€</small>
-                  //       {item.price}
-                  //     </span>
-                  //   )),
-                  //   cartItems.map((item) => (
-                  //     <Tooltip
-                  //       key={item.product}
-                  //       id="close1"
-                  //       title="Remove item"
-                  //       placement="left"
-                  //       classes={{ tooltip: classes.tooltip }}
-                  //     >
-                  //       <Button link className={classes.actionButton}>
-                  //         <Close />
-                  //       </Button>
-                  //     </Tooltip>
-                  //   )),
-                  // ],
-                  // {
-                  //   purchase: true,
-                  //   colspan: "3",
-                  //   amount: (
-                  //     <span>
-                  //       <small>€</small>2,346
-                  //     </span>
-                  //   ),
-                  //   col: {
-                  //     colspan: 3,
-                  //     text: (
-                  //       <Button color="info" round>
-                  //         Complete Purchase <KeyboardArrowRight />
-                  //       </Button>
-                  //     ),
-                  //   },
-                  // },
-                }
+                  ],
+
+                  {
+                    purchase: true,
+                    colspan: "3",
+                    amount: (
+                      <span>
+                        <small>€</small>2,346
+                      </span>
+                    ),
+                    col: {
+                      colspan: 3,
+                      text: (
+                        <Button color="info" round>
+                          Complete Purchase <KeyboardArrowRight />
+                        </Button>
+                      ),
+                    },
+                  }
+                )}
                 tableShopping
                 customHeadCellClasses={[
                   classes.textCenter,
