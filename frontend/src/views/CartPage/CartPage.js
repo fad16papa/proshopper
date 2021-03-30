@@ -102,81 +102,72 @@ const CartPage = ({ match, location, history }) => {
                 tableHead={["", "PRODUCT", "PRICE", "QTY", "AMOUNT", ""]}
                 tableData={[
                   [
-                    cartItems.map(
-                      (item) => (
-                        <div
-                          className={classes.imgContainer}
-                          key={item.product}
-                        >
-                          <img
-                            src={item.image}
-                            alt="..."
-                            className={classes.img}
-                          />
-                        </div>
-                      ),
-                      (item) => (
-                        (
-                          <span key={1}>
-                            <a href="#jacket" className={classes.tdNameAnchor}>
-                              Spring Jacket
-                            </a>
-                            <br />
-                            <small className={classes.tdNameSmall}>
-                              by Dolce&amp;Gabbana
-                            </small>
-                          </span>
-                        ),
-                        (
-                          <span key={1}>
-                            <small className={classes.tdNumberSmall}>€</small>{" "}
-                            549
-                          </span>
-                        ),
-                        (
-                          <span key={1}>
-                            1{` `}
-                            <div className={classes.buttonGroup}>
-                              <Button
-                                color="info"
-                                size="sm"
-                                round
-                                className={classes.firstButton}
-                              >
-                                <Remove />
-                              </Button>
-                              <Button
-                                color="info"
-                                size="sm"
-                                round
-                                className={classes.lastButton}
-                              >
-                                <Add />
-                              </Button>
-                            </div>
-                          </span>
-                        ),
-                        (
-                          <span key={1}>
-                            <small className={classes.tdNumberSmall}>€</small>{" "}
-                            549
-                          </span>
-                        ),
-                        (
-                          <Tooltip
-                            key={1}
-                            id="close1"
-                            title="Remove item"
-                            placement="left"
-                            classes={{ tooltip: classes.tooltip }}
+                    cartItems.map((item) => (
+                      <div className={classes.imgContainer} key={1}>
+                        <img
+                          src={item.image}
+                          alt="..."
+                          className={classes.img}
+                        />
+                      </div>
+                    )),
+                    cartItems.map((item) => (
+                      <span key={item.product}>
+                        <a href="#jacket" className={classes.tdNameAnchor}>
+                          {item.name}
+                        </a>
+                        <br />
+                      </span>
+                    )),
+                    cartItems.map((item) => (
+                      <span key={item.product}>
+                        <small className={classes.tdNumberSmall}>€</small>
+                        {item.price}
+                      </span>
+                    )),
+                    cartItems.map((item) => (
+                      <span key={item.product}>
+                        {item.qty}
+                        {` `}
+                        <div className={classes.buttonGroup}>
+                          <Button
+                            color="info"
+                            size="sm"
+                            round
+                            className={classes.firstButton}
                           >
-                            <Button link className={classes.actionButton}>
-                              <Close />
-                            </Button>
-                          </Tooltip>
-                        )
-                      )
-                    ),
+                            <Remove />
+                          </Button>
+                          <Button
+                            color="info"
+                            size="sm"
+                            round
+                            className={classes.lastButton}
+                          >
+                            <Add />
+                          </Button>
+                        </div>
+                      </span>
+                    )),
+                    cartItems.map((item) => (
+                      <span key={item.product}>
+                        <small className={classes.tdNumberSmall}>€</small>
+                        {item.price}
+                      </span>
+                    )),
+                    cartItems.map((item) => (
+                      <Tooltip
+                        key={item.product}
+                        id="close1"
+                        title="Remove item"
+                        placement="left"
+                        classes={{ tooltip: classes.tooltip }}
+                      >
+                        <Button link className={classes.actionButton}>
+                          <Close />
+                        </Button>
+                      </Tooltip>
+                    )),
                   ],
                   {
                     purchase: true,
