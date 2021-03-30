@@ -56,7 +56,7 @@ const CartPage = ({ match, location, history }) => {
     document.body.scrollTop = 0;
   }, [dispatch, productId, qty]);
 
-  const removeFromContainer = (id) => {
+  const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
   };
 
@@ -67,16 +67,16 @@ const CartPage = ({ match, location, history }) => {
   return (
     <Fragment>
       <Header
-        brand="ProShopper"
-        links={<HeaderLinks dropdownHoverColor="info" />}
+        brand='ProShopper'
+        links={<HeaderLinks dropdownHoverColor='info' />}
         fixed
-        color="transparent"
+        color='transparent'
         changeColorOnScroll={{
           height: 300,
           color: "info",
         }}
       />
-      <Parallax image={backgroundImage} filter="dark" small>
+      <Parallax image={backgroundImage} filter='dark' small>
         <div className={classes.container}>
           <GridContainer>
             <GridItem
@@ -86,8 +86,7 @@ const CartPage = ({ match, location, history }) => {
                 classes.mlAuto,
                 classes.mrAuto,
                 classes.textCenter
-              )}
-            >
+              )}>
               <h2 className={classes.title}>Shopping Page</h2>
             </GridItem>
           </GridContainer>
@@ -103,10 +102,10 @@ const CartPage = ({ match, location, history }) => {
                 tableData={cartItems.map(
                   (item) => [
                     <div className={classes.imgContainer} key={item.product}>
-                      <img src={item.image} alt="..." className={classes.img} />
+                      <img src={item.image} alt='...' className={classes.img} />
                     </div>,
                     <span key={item.product}>
-                      <a href="#jacket" className={classes.tdNameAnchor}>
+                      <a href='#jacket' className={classes.tdNameAnchor}>
                         {item.name}
                       </a>
                     </span>,
@@ -119,19 +118,17 @@ const CartPage = ({ match, location, history }) => {
                       {` `}
                       <div className={classes.buttonGroup}>
                         <Button
-                          color="info"
-                          size="sm"
+                          color='info'
+                          size='sm'
                           round
-                          className={classes.firstButton}
-                        >
+                          className={classes.firstButton}>
                           <Remove />
                         </Button>
                         <Button
-                          color="info"
-                          size="sm"
+                          color='info'
+                          size='sm'
                           round
-                          className={classes.lastButton}
-                        >
+                          className={classes.lastButton}>
                           <Add />
                         </Button>
                       </div>
@@ -142,11 +139,11 @@ const CartPage = ({ match, location, history }) => {
                     </span>,
                     <Tooltip
                       key={item.product}
-                      id="close1"
-                      title="Remove item"
-                      placement="left"
-                      classes={{ tooltip: classes.tooltip }}
-                    >
+                      onClick={() => removeFromCartHandler(item.product)}
+                      id='close1'
+                      title='Remove item'
+                      placement='left'
+                      classes={{ tooltip: classes.tooltip }}>
                       <Button link className={classes.actionButton}>
                         <Close />
                       </Button>
@@ -164,7 +161,7 @@ const CartPage = ({ match, location, history }) => {
                     col: {
                       colspan: 3,
                       text: (
-                        <Button color="info" round>
+                        <Button color='info' round>
                           Complete Purchase <KeyboardArrowRight />
                         </Button>
                       ),
@@ -202,37 +199,33 @@ const CartPage = ({ match, location, history }) => {
               <List className={classes.list}>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href="https://www.creative-tim.com/?ref=mkpr-shopping-cart"
-                    target="_blank"
-                    className={classes.block}
-                  >
+                    href='https://www.creative-tim.com/?ref=mkpr-shopping-cart'
+                    target='_blank'
+                    className={classes.block}>
                     Creative Tim
                   </a>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href="https://www.creative-tim.com/presentation?ref=mkpr-shopping-cart"
-                    target="_blank"
-                    className={classes.block}
-                  >
+                    href='https://www.creative-tim.com/presentation?ref=mkpr-shopping-cart'
+                    target='_blank'
+                    className={classes.block}>
                     About us
                   </a>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href="https://blog.creative-tim.com/?ref=mkpr-shopping-cart"
-                    target="_blank"
-                    className={classes.block}
-                  >
+                    href='https://blog.creative-tim.com/?ref=mkpr-shopping-cart'
+                    target='_blank'
+                    className={classes.block}>
                     Blog
                   </a>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href="https://www.creative-tim.com/license?ref=mkpr-shopping-cart"
-                    target="_blank"
-                    className={classes.block}
-                  >
+                    href='https://www.creative-tim.com/license?ref=mkpr-shopping-cart'
+                    target='_blank'
+                    className={classes.block}>
                     Licenses
                   </a>
                 </ListItem>
@@ -242,9 +235,8 @@ const CartPage = ({ match, location, history }) => {
               &copy; {1900 + new Date().getYear()} , made with{" "}
               <Favorite className={classes.icon} /> by{" "}
               <a
-                href="https://www.creative-tim.com?ref=mkpr-shopping-cart"
-                target="_blank"
-              >
+                href='https://www.creative-tim.com?ref=mkpr-shopping-cart'
+                target='_blank'>
                 Creative Tim
               </a>{" "}
               for a better web.
