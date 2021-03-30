@@ -46,7 +46,6 @@ const CartPage = ({ match, location, history }) => {
   const { cartItems } = cart;
 
   const dispatch = useDispatch();
-
   const classes = useStyle();
 
   useEffect(() => {
@@ -68,16 +67,16 @@ const CartPage = ({ match, location, history }) => {
   return (
     <Fragment>
       <Header
-        brand='ProShopper'
-        links={<HeaderLinks dropdownHoverColor='info' />}
+        brand="ProShopper"
+        links={<HeaderLinks dropdownHoverColor="info" />}
         fixed
-        color='transparent'
+        color="transparent"
         changeColorOnScroll={{
           height: 300,
           color: "info",
         }}
       />
-      <Parallax image={backgroundImage} filter='dark' small>
+      <Parallax image={backgroundImage} filter="dark" small>
         <div className={classes.container}>
           <GridContainer>
             <GridItem
@@ -87,7 +86,8 @@ const CartPage = ({ match, location, history }) => {
                 classes.mlAuto,
                 classes.mrAuto,
                 classes.textCenter
-              )}>
+              )}
+            >
               <h2 className={classes.title}>Shopping Page</h2>
             </GridItem>
           </GridContainer>
@@ -102,53 +102,81 @@ const CartPage = ({ match, location, history }) => {
                 tableHead={["", "PRODUCT", "PRICE", "QTY", "AMOUNT", ""]}
                 tableData={[
                   [
-                    <div className={classes.imgContainer} key={1}>
-                      <img src={product1} alt='...' className={classes.img} />
-                    </div>,
-                    <span key={1}>
-                      <a href='#jacket' className={classes.tdNameAnchor}>
-                        Spring Jacket
-                      </a>
-                      <br />
-                      <small className={classes.tdNameSmall}>
-                        by Dolce&amp;Gabbana
-                      </small>
-                    </span>,
-                    <span key={1}>
-                      <small className={classes.tdNumberSmall}>€</small> 549
-                    </span>,
-                    <span key={1}>
-                      1{` `}
-                      <div className={classes.buttonGroup}>
-                        <Button
-                          color='info'
-                          size='sm'
-                          round
-                          className={classes.firstButton}>
-                          <Remove />
-                        </Button>
-                        <Button
-                          color='info'
-                          size='sm'
-                          round
-                          className={classes.lastButton}>
-                          <Add />
-                        </Button>
-                      </div>
-                    </span>,
-                    <span key={1}>
-                      <small className={classes.tdNumberSmall}>€</small> 549
-                    </span>,
-                    <Tooltip
-                      key={1}
-                      id='close1'
-                      title='Remove item'
-                      placement='left'
-                      classes={{ tooltip: classes.tooltip }}>
-                      <Button link className={classes.actionButton}>
-                        <Close />
-                      </Button>
-                    </Tooltip>,
+                    cartItems.map(
+                      (item) => (
+                        <div
+                          className={classes.imgContainer}
+                          key={item.product}
+                        >
+                          <img
+                            src={item.image}
+                            alt="..."
+                            className={classes.img}
+                          />
+                        </div>
+                      ),
+                      (item) => (
+                        (
+                          <span key={1}>
+                            <a href="#jacket" className={classes.tdNameAnchor}>
+                              Spring Jacket
+                            </a>
+                            <br />
+                            <small className={classes.tdNameSmall}>
+                              by Dolce&amp;Gabbana
+                            </small>
+                          </span>
+                        ),
+                        (
+                          <span key={1}>
+                            <small className={classes.tdNumberSmall}>€</small>{" "}
+                            549
+                          </span>
+                        ),
+                        (
+                          <span key={1}>
+                            1{` `}
+                            <div className={classes.buttonGroup}>
+                              <Button
+                                color="info"
+                                size="sm"
+                                round
+                                className={classes.firstButton}
+                              >
+                                <Remove />
+                              </Button>
+                              <Button
+                                color="info"
+                                size="sm"
+                                round
+                                className={classes.lastButton}
+                              >
+                                <Add />
+                              </Button>
+                            </div>
+                          </span>
+                        ),
+                        (
+                          <span key={1}>
+                            <small className={classes.tdNumberSmall}>€</small>{" "}
+                            549
+                          </span>
+                        ),
+                        (
+                          <Tooltip
+                            key={1}
+                            id="close1"
+                            title="Remove item"
+                            placement="left"
+                            classes={{ tooltip: classes.tooltip }}
+                          >
+                            <Button link className={classes.actionButton}>
+                              <Close />
+                            </Button>
+                          </Tooltip>
+                        )
+                      )
+                    ),
                   ],
                   {
                     purchase: true,
@@ -161,7 +189,7 @@ const CartPage = ({ match, location, history }) => {
                     col: {
                       colspan: 3,
                       text: (
-                        <Button color='info' round>
+                        <Button color="info" round>
                           Complete Purchase <KeyboardArrowRight />
                         </Button>
                       ),
@@ -199,33 +227,37 @@ const CartPage = ({ match, location, history }) => {
               <List className={classes.list}>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href='https://www.creative-tim.com/?ref=mkpr-shopping-cart'
-                    target='_blank'
-                    className={classes.block}>
+                    href="https://www.creative-tim.com/?ref=mkpr-shopping-cart"
+                    target="_blank"
+                    className={classes.block}
+                  >
                     Creative Tim
                   </a>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href='https://www.creative-tim.com/presentation?ref=mkpr-shopping-cart'
-                    target='_blank'
-                    className={classes.block}>
+                    href="https://www.creative-tim.com/presentation?ref=mkpr-shopping-cart"
+                    target="_blank"
+                    className={classes.block}
+                  >
                     About us
                   </a>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href='https://blog.creative-tim.com/?ref=mkpr-shopping-cart'
-                    target='_blank'
-                    className={classes.block}>
+                    href="https://blog.creative-tim.com/?ref=mkpr-shopping-cart"
+                    target="_blank"
+                    className={classes.block}
+                  >
                     Blog
                   </a>
                 </ListItem>
                 <ListItem className={classes.inlineBlock}>
                   <a
-                    href='https://www.creative-tim.com/license?ref=mkpr-shopping-cart'
-                    target='_blank'
-                    className={classes.block}>
+                    href="https://www.creative-tim.com/license?ref=mkpr-shopping-cart"
+                    target="_blank"
+                    className={classes.block}
+                  >
                     Licenses
                   </a>
                 </ListItem>
@@ -235,8 +267,9 @@ const CartPage = ({ match, location, history }) => {
               &copy; {1900 + new Date().getYear()} , made with{" "}
               <Favorite className={classes.icon} /> by{" "}
               <a
-                href='https://www.creative-tim.com?ref=mkpr-shopping-cart'
-                target='_blank'>
+                href="https://www.creative-tim.com?ref=mkpr-shopping-cart"
+                target="_blank"
+              >
                 Creative Tim
               </a>{" "}
               for a better web.
