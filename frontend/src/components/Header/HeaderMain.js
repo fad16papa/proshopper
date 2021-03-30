@@ -6,10 +6,10 @@ const HeaderMain = () => {
   return (
     <header>
       <Header
-        brand="ProShopper"
-        links={<HeaderLinks dropdownHoverColor="info" />}
+        brand='ProShopper'
+        links={<HeaderLinks dropdownHoverColor='info' />}
         fixed
-        color="transparent"
+        color='transparent'
         changeColorOnScroll={{
           height: 300,
           color: "info",
