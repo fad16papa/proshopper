@@ -26,9 +26,6 @@ import CardBody from "../../components/Card/CardBody.js";
 
 import shoppingCartStyle from "../../assets/jss/material-kit-pro-react/views/shoppingCartStyle.js";
 
-import product1 from "../../assets/img/product1.jpg";
-import product2 from "../../assets/img/product2.jpg";
-import product3 from "../../assets/img/product3.jpg";
 import backgroundImage from "../../assets/img/examples/bg2.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../actions/cartAction.js";
