@@ -30,6 +30,10 @@ import backgroundImage from "../../assets/img/examples/bg2.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../actions/cartAction.js";
 
+import product1 from "../../assets/img/product1.jpg";
+import product2 from "../../assets/img/product2.jpg";
+import product3 from "../../assets/img/product3.jpg";
+
 const useStyle = makeStyles(shoppingCartStyle);
 
 const CartPage = ({ match, location, history }) => {
@@ -96,56 +100,8 @@ const CartPage = ({ match, location, history }) => {
               <h3 className={classes.cardTitle}>Shopping Cart</h3>
               <Table
                 tableHead={["", "PRODUCT", "PRICE", "QTY", "AMOUNT", ""]}
-                tableData={cartItems.map(
-                  (item) => [
-                    <div className={classes.imgContainer} key={item.product}>
-                      <img src={item.image} alt='...' className={classes.img} />
-                    </div>,
-                    <span key={item.product}>
-                      <a href='#jacket' className={classes.tdNameAnchor}>
-                        {item.name}
-                      </a>
-                    </span>,
-                    <span key={item.product}>
-                      <small className={classes.tdNumberSmall}>€</small>
-                      {item.price}
-                    </span>,
-                    <span key={item.product}>
-                      {item.qty}
-                      {` `}
-                      <div className={classes.buttonGroup}>
-                        <Button
-                          color='info'
-                          size='sm'
-                          round
-                          className={classes.firstButton}>
-                          <Remove />
-                        </Button>
-                        <Button
-                          color='info'
-                          size='sm'
-                          round
-                          className={classes.lastButton}>
-                          <Add />
-                        </Button>
-                      </div>
-                    </span>,
-                    <span key={item.product}>
-                      <small className={classes.tdNumberSmall}>€</small>
-                      {item.price}
-                    </span>,
-                    <Tooltip
-                      key={item.product}
-                      onClick={() => removeFromCartHandler(item.product)}
-                      id='close1'
-                      title='Remove item'
-                      placement='left'
-                      classes={{ tooltip: classes.tooltip }}>
-                      <Button link className={classes.actionButton}>
-                        <Close />
-                      </Button>
-                    </Tooltip>,
-                  ],
+                tableData={[
+                  [],
                   {
                     purchase: true,
                     colspan: "3",
@@ -162,8 +118,76 @@ const CartPage = ({ match, location, history }) => {
                         </Button>
                       ),
                     },
-                  }
-                )}
+                  },
+                ]}
+                // tableData={cartItems.map(
+                //   (item) => [
+                // <div className={classes.imgContainer} key={item.product}>
+                //   <img src={item.image} alt='...' className={classes.img} />
+                // </div>,
+                // <span key={item.product}>
+                //   <a href='#jacket' className={classes.tdNameAnchor}>
+                //     {item.name}
+                //   </a>
+                // </span>,
+                // <span key={item.product}>
+                //   <small className={classes.tdNumberSmall}>€</small>
+                //   {item.price}
+                // </span>,
+                // <span key={item.product}>
+                //   {item.qty}
+                //   {` `}
+                //   <div className={classes.buttonGroup}>
+                //     <Button
+                //       color='info'
+                //       size='sm'
+                //       round
+                //       className={classes.firstButton}>
+                //       <Remove />
+                //     </Button>
+                //     <Button
+                //       color='info'
+                //       size='sm'
+                //       round
+                //       className={classes.lastButton}>
+                //       <Add />
+                //     </Button>
+                //   </div>
+                // </span>,
+                // <span key={item.product}>
+                //   <small className={classes.tdNumberSmall}>€</small>
+                //   {item.price}
+                // </span>,
+                // <Tooltip
+                //   key={item.product}
+                //   onClick={() => removeFromCartHandler(item.product)}
+                //   id='close1'
+                //   title='Remove item'
+                //   placement='left'
+                //   classes={{ tooltip: classes.tooltip }}>
+                //   <Button link className={classes.actionButton}>
+                //     <Close />
+                //   </Button>
+                // </Tooltip>,
+                //   ],
+                //   {
+                //     purchase: true,
+                //     colspan: "3",
+                //     amount: (
+                //       <span>
+                //         <small>€</small>2,346
+                //       </span>
+                //     ),
+                //     col: {
+                //       colspan: 3,
+                //       text: (
+                //         <Button color='info' round>
+                //           Complete Purchase <KeyboardArrowRight />
+                //         </Button>
+                //       ),
+                //     },
+                //   }
+                // )}
                 tableShopping
                 customHeadCellClasses={[
                   classes.textCenter,
