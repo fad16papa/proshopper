@@ -101,7 +101,55 @@ const CartPage = ({ match, location, history }) => {
               <Table
                 tableHead={["", "PRODUCT", "PRICE", "QTY", "AMOUNT", ""]}
                 tableData={[
-                  [],
+                  cartItems.map((item) => [
+                    <div className={classes.imgContainer} key={item.product}>
+                      <img src={item.image} alt='...' className={classes.img} />
+                    </div>,
+                    <span key={item.product}>
+                      <a href='#jacket' className={classes.tdNameAnchor}>
+                        {item.name}
+                      </a>
+                    </span>,
+                    <span key={item.product}>
+                      <small className={classes.tdNumberSmall}>€</small>
+                      {item.price}
+                    </span>,
+                    <span key={item.product}>
+                      {item.qty}
+                      {` `}
+                      <div className={classes.buttonGroup}>
+                        <Button
+                          color='info'
+                          size='sm'
+                          round
+                          className={classes.firstButton}>
+                          <Remove />
+                        </Button>
+                        <Button
+                          color='info'
+                          size='sm'
+                          round
+                          className={classes.lastButton}>
+                          <Add />
+                        </Button>
+                      </div>
+                    </span>,
+                    <span key={item.product}>
+                      <small className={classes.tdNumberSmall}>€</small>
+                      {item.price}
+                    </span>,
+                    <Tooltip
+                      key={item.product}
+                      onClick={() => removeFromCartHandler(item.product)}
+                      id='close1'
+                      title='Remove item'
+                      placement='left'
+                      classes={{ tooltip: classes.tooltip }}>
+                      <Button link className={classes.actionButton}>
+                        <Close />
+                      </Button>
+                    </Tooltip>,
+                  ]),
                   {
                     purchase: true,
                     colspan: "3",
